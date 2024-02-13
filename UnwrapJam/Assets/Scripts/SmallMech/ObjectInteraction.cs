@@ -10,6 +10,23 @@ public class ObjectInteraction : MonoBehaviour
 
     Rigidbody _rigidbodyOfCarriedObject;
 
+    public SmallRobotControler PlayerInputMaster;
+
+    private void OnEnable()
+    {
+        PlayerInputMaster.player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        PlayerInputMaster.player.Disable();
+    }
+
+    void Awake()
+    {
+        PlayerInputMaster = new SmallRobotControler();
+    }
+
     //private Collider[] _colliders;
 
     //private void Awake()
@@ -24,10 +41,9 @@ public class ObjectInteraction : MonoBehaviour
             CarryPickedUpObject();
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && IsCarryingObject)
+        if (PlayerInputMaster.player.Interact.triggered && IsCarryingObject)
         {
             IsCarryingObject = false;
-            
 
             _rigidbodyOfCarriedObject.isKinematic = false;
             
@@ -65,7 +81,7 @@ public class ObjectInteraction : MonoBehaviour
             if (!col.TryGetComponent<IPickUpAble>(out IPickUpAble interactableObject)) continue;
             interactableObject.Selecet();
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (PlayerInputMaster.player.Interact.triggered)
             {
                 interactableObject.Interact();
 

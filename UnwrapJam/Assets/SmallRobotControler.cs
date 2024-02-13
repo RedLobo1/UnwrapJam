@@ -61,7 +61,7 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""254cbb7d-0812-4d4b-a3c2-7d63bb2009f9"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
