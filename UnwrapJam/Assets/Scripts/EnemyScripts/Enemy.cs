@@ -59,5 +59,13 @@ public class Enemy : MonoBehaviour, IDestructible
         _target = go;
     }
 
+    public IEnumerator Die()
+    {
+        //play animation
+        yield return new WaitForSeconds(3);
+        Destroy(this.gameObject);
+
+    }
+
 
 }

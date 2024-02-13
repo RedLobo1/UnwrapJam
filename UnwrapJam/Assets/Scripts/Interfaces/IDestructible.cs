@@ -4,8 +4,6 @@ using UnityEngine;
 
 public interface IDestructible
 {
-    public virtual void Destroy()
-    {
-
-    }
+    public abstract void Destroy();
+    
 }
