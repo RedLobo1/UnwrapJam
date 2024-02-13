@@ -30,6 +30,8 @@ public class HealItem : MonoBehaviour, IPickUpAble
             if (collision.gameObject.TryGetComponent<MechHealth>(out MechHealth mechHealthScript))
             {
                 mechHealthScript.Heal(10);
+
+                Destroy(gameObject);
             }
         }
     }
