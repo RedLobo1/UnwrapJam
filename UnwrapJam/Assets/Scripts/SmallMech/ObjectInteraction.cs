@@ -40,11 +40,7 @@ public class ObjectInteraction : MonoBehaviour
     
     private void ThrowCarriedObject()
     {
-
-
         Rigidbody projectileRb = _rigidbodyOfCarriedObject;
-
-        
 
         projectileRb.AddForce(transform.forward * 15f, ForceMode.Impulse);
     }
@@ -60,6 +56,8 @@ public class ObjectInteraction : MonoBehaviour
 
     private void CheckForObjectsToInteractWith()
     {
+        if (IsCarryingObject) return;
+
         Collider[] interactables = Physics.OverlapSphere(transform.position + transform.forward * 1.5f, 1.5f);
         //if (Physics.OverlapSphereNonAlloc(transform.position + transform.forward * 1.5f, 1.5f, _colliders) == 0) return;
         foreach (Collider col in interactables)
@@ -74,14 +72,12 @@ public class ObjectInteraction : MonoBehaviour
                 if (IsCarryingObject) continue;
 
                 PickUpObject(col.gameObject);
-
             }
         }
     }
 
     private void PickUpObject(GameObject gameObject)
     {
-
         IsCarryingObject = true;
 
         _objectBeingCarried = gameObject;
