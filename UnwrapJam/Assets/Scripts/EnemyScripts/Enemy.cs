@@ -67,4 +67,10 @@ public class Enemy : MonoBehaviour, IDestructible
 
     }
 
+  
+
+    void IDestructible.Destroy()
+    {
+        StartCoroutine(Die());
+    }
 }
