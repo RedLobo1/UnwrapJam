@@ -31,9 +31,7 @@ public class Enemy : MonoBehaviour, IDestructible
     private void Update()
     {
         if(_target!=null && Vector3.Distance(this.transform.position, _target.transform.position)<=_shootingRange)
-        {
-            Debug.Log("Shooting");
-           
+        {           
 
             _enemyInRange = true;
         }
