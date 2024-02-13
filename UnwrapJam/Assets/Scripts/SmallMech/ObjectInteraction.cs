@@ -10,12 +10,12 @@ public class ObjectInteraction : MonoBehaviour
 
     Rigidbody _rigidbodyOfCarriedObject;
 
-    private Collider[] _colliders;
+    //private Collider[] _colliders;
 
-    private void Awake()
-    {
-        _colliders = new Collider[5];
-    }
+    //private void Awake()
+    //{
+    //    _colliders = new Collider[5];
+    //}
 
     void Update()
     {
@@ -29,7 +29,7 @@ public class ObjectInteraction : MonoBehaviour
             IsCarryingObject = false;
             
 
-            _objectBeingCarried.GetComponent<Rigidbody>().isKinematic = false;
+            _rigidbodyOfCarriedObject.isKinematic = false;
             
             ThrowCarriedObject();
 
@@ -44,9 +44,9 @@ public class ObjectInteraction : MonoBehaviour
     
     private void ThrowCarriedObject()
     {
-        
 
-        Rigidbody projectileRb = _objectBeingCarried.GetComponent<Rigidbody>();
+
+        Rigidbody projectileRb = _rigidbodyOfCarriedObject;
 
         
 
@@ -88,12 +88,13 @@ public class ObjectInteraction : MonoBehaviour
 
         IsCarryingObject = true;
 
-
         _objectBeingCarried = gameObject;
 
+        _rigidbodyOfCarriedObject = _objectBeingCarried.GetComponent<Rigidbody>();
 
+        //_objectBeingCarried.GetComponent<Rigidbody>().isKinematic = true;
 
-        _objectBeingCarried.GetComponent<Rigidbody>().isKinematic = true;
+        _rigidbodyOfCarriedObject.isKinematic = true;
 
     }
 }
