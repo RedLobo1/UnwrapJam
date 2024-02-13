@@ -123,6 +123,133 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Arrows"",
+                    ""id"": ""17de504d-6647-46ef-bb3f-af3de0c411f8"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""8c5a5436-c1f5-44e7-94eb-d5352e98dadd"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""140cf705-b49e-4dfc-a16a-4a46c23126e4"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""974d80a1-e929-4d79-b9cd-b6598e827681"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""7cebb2fd-7b9f-47bd-8947-225c1893c36d"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
+            ""name"": ""BigMechPlayer"",
+            ""id"": ""b0f67d6b-9ccb-4dda-ab34-f5def2aba85c"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""d122cbc5-c375-4e2e-aae5-80d5ee096664"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""Keyboard"",
+                    ""id"": ""a4f0801b-717d-49cc-bfc0-343abdadc164"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""924540e9-eb28-490b-8a17-6921d5c537bb"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""ba822f7b-b0f0-46db-a46b-52e17e55bf2e"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""19e3bf96-58a7-4ad9-aa3a-ff27b5173128"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""6f375ae9-b9e2-4d71-ad09-c48dacf50ffb"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -139,6 +266,9 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
         m_player = asset.FindActionMap("player", throwIfNotFound: true);
         m_player_Look = m_player.FindAction("Look", throwIfNotFound: true);
         m_player_Interact = m_player.FindAction("Interact", throwIfNotFound: true);
+        // BigMechPlayer
+        m_BigMechPlayer = asset.FindActionMap("BigMechPlayer", throwIfNotFound: true);
+        m_BigMechPlayer_Move = m_BigMechPlayer.FindAction("Move", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -250,6 +380,52 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @player => new PlayerActions(this);
+
+    // BigMechPlayer
+    private readonly InputActionMap m_BigMechPlayer;
+    private List<IBigMechPlayerActions> m_BigMechPlayerActionsCallbackInterfaces = new List<IBigMechPlayerActions>();
+    private readonly InputAction m_BigMechPlayer_Move;
+    public struct BigMechPlayerActions
+    {
+        private @SmallRobotControler m_Wrapper;
+        public BigMechPlayerActions(@SmallRobotControler wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_BigMechPlayer_Move;
+        public InputActionMap Get() { return m_Wrapper.m_BigMechPlayer; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BigMechPlayerActions set) { return set.Get(); }
+        public void AddCallbacks(IBigMechPlayerActions instance)
+        {
+            if (instance == null || m_Wrapper.m_BigMechPlayerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_BigMechPlayerActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+        }
+
+        private void UnregisterCallbacks(IBigMechPlayerActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+        }
+
+        public void RemoveCallbacks(IBigMechPlayerActions instance)
+        {
+            if (m_Wrapper.m_BigMechPlayerActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IBigMechPlayerActions instance)
+        {
+            foreach (var item in m_Wrapper.m_BigMechPlayerActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_BigMechPlayerActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public BigMechPlayerActions @BigMechPlayer => new BigMechPlayerActions(this);
     private int m_SmallRobotControl1SchemeIndex = -1;
     public InputControlScheme SmallRobotControl1Scheme
     {
@@ -263,5 +439,9 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
     {
         void OnLook(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface IBigMechPlayerActions
+    {
+        void OnMove(InputAction.CallbackContext context);
     }
 }

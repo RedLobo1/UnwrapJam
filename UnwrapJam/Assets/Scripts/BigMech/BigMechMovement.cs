@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class BigMechMovement : MonoBehaviour
 {
@@ -13,7 +14,28 @@ public class BigMechMovement : MonoBehaviour
     private float _gravityMultiplier = 3.0f;
     private float _velocity;
 
+    public SmallRobotControler PlayerInputMaster;
 
+    private InputAction _moveAction;
+
+    void Awake()
+    {
+        PlayerInputMaster = new SmallRobotControler();
+    }
+    private void OnEnable()
+    {
+        _moveAction = PlayerInputMaster.BigMechPlayer.Move;
+
+        //PlayerInputMaster.player.Enable();
+
+        _moveAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        //PlayerInputMaster.player.Disable();
+        _moveAction.Disable();
+    }
 
     void Start()
     {
@@ -37,8 +59,10 @@ public class BigMechMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        float xDirection = Input.GetAxis("Horizontal");
-        float yDirection = Input.GetAxis("Vertical");
+        Vector2 inputVector = _moveAction.ReadValue<Vector2>();
+
+        float xDirection = inputVector.x;
+        float yDirection = inputVector.y;
         Vector3 direction = xDirection * Vector3.right + yDirection * Vector3.forward;
         //direction.y = 0f;
 

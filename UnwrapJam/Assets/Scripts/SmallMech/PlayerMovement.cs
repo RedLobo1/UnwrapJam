@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,6 +17,30 @@ public class PlayerMovement : MonoBehaviour
     private float _turnSMoothTime = 0.1f;
     float _turnSmothVelocity;
 
+    public SmallRobotControler PlayerInputMaster;
+
+    private InputAction _moveAction;
+
+    void Awake()
+    {
+        PlayerInputMaster = new SmallRobotControler();
+    }
+
+    private void OnEnable()
+    {
+        _moveAction = PlayerInputMaster.player.Look;
+
+        //PlayerInputMaster.player.Enable();
+
+        _moveAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        //PlayerInputMaster.player.Disable();
+        _moveAction.Disable();
+    }
+
     void Start()
     {
         _controller = GetComponent<CharacterController>();
@@ -28,8 +53,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        float xDirection = Input.GetAxis("Horizontal");
-        float yDirection = Input.GetAxis("Vertical");
+        Vector2 inputVector = _moveAction.ReadValue<Vector2>();
+
+        float xDirection = inputVector.x;
+        float yDirection = inputVector.y;
         Vector3 direction = xDirection * Vector3.right + yDirection * Vector3.forward;
         //direction.y = 0f;
 
