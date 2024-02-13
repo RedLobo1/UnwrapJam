@@ -34,10 +34,10 @@ public class BulletMove : MonoBehaviour
         transform.position += Speed * Time.deltaTime * Dir;
     }
 
-    public void Pary()
+    public void Pary(Vector3 dir)
     {
         if (hasParried) return;
-        Dir *= -1;
+        Dir = dir;
         hasParried = true;
     }
 }
