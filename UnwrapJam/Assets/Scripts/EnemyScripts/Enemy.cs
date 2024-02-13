@@ -31,9 +31,7 @@ public class Enemy : MonoBehaviour, IDestructible
     private void Update()
     {
         if(_target!=null && Vector3.Distance(this.transform.position, _target.transform.position)<=_shootingRange)
-        {
-            Debug.Log("Shooting");
-            Shoot?.Invoke();
+        {           
 
             _enemyInRange = true;
         }
@@ -50,7 +48,7 @@ public class Enemy : MonoBehaviour, IDestructible
     {
         yield return new WaitForSeconds(_shootingCooldown);
         Debug.Log("Shot Fired");
-        Shoot?.Invoke();
+        Shoot?.Invoke();    
         _isShooting = false;
     }
 
@@ -69,7 +67,7 @@ public class Enemy : MonoBehaviour, IDestructible
 
   
 
-    void IDestructible.Destroy()
+    void IDestructible.Destruct()
     {
         StartCoroutine(Die());
     }

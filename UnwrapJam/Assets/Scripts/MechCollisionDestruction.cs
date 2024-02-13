@@ -8,7 +8,7 @@ public class MechCollisionDestruction : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent<IDestructible>(out IDestructible destructible))
         {
-            destructible.Destroy();
+            destructible.Destruct();
         }
     }
 }

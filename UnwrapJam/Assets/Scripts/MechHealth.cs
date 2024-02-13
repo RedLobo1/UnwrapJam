@@ -16,7 +16,7 @@ public class MechHealth : MonoBehaviour, IDestructible
         _currentHealth -= damageAmount;
     }
 
-    public void Destroy()
+    public void Destruct()
     {
         Die();
 
