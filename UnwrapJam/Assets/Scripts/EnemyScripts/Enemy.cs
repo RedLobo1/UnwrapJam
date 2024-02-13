@@ -59,20 +59,20 @@ public class Enemy : MonoBehaviour
         _target = go;
     }
 
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
 
-=======
-    public IEnumerator Die()
-    {
-        //play animation
-        yield return new WaitForSeconds(3);
-        Destroy(this.gameObject);
+//=======
+//    public IEnumerator Die()
+//    {
+//        //play animation
+//        yield return new WaitForSeconds(3);
+//        Destroy(this.gameObject);
 
-    }
+//    }
 
-    public void Destroy()
-    {
-        Die();
-    }
->>>>>>> Stashed changes
+//    public void Destroy()
+//    {
+//        Die();
+//    }
+//>>>>>>> Stashed changes
 }
