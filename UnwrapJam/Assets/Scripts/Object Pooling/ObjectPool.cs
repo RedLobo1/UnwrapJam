@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    public static ObjectPool instance;
+    public static ObjectPool pool;
 
     private List<GameObject> _pulledObjects;
     [SerializeField]
@@ -15,9 +15,9 @@ public class ObjectPool : MonoBehaviour
     private int _countToPool;
     private void Awake()
     {
-        if(instance == null)
+        if(pool == null)
         {
-            instance = this;
+            pool = this;
         }
         _pulledObjects = new List<GameObject>();
         for (int i = 0; i < _countToPool; i++)
@@ -30,16 +30,16 @@ public class ObjectPool : MonoBehaviour
 
     public static GameObject GetPooledObject()
     {
-        for (int i = 0; i < instance._pulledObjects.Count; i++)
+        for (int i = 0; i < pool._pulledObjects.Count; i++)
         {
-            if (!instance._pulledObjects[i].activeInHierarchy)
-                return instance._pulledObjects[i];
+            if (!pool._pulledObjects[i].activeInHierarchy)
+                return pool._pulledObjects[i];
         }
-        if(instance._canExpand)
+        if(pool._canExpand)
         {
-            GameObject ob = Instantiate(instance._objectToPool,instance.transform);
+            GameObject ob = Instantiate(pool._objectToPool,pool.transform);
             ob.SetActive(false);
-            instance._pulledObjects.Add(ob);
+            pool._pulledObjects.Add(ob);
             return ob;
         }
         return null;

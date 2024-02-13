@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class BulletMove : MonoBehaviour
 {
-    [SerializeField]
-    private float _speed = 2f;
+    public float Speed = 2f;
+    private bool hasParried = false;
 
     private void Update()
     {
-        transform.position += _speed * Time.deltaTime * transform.forward;
+        transform.position += Speed * Time.deltaTime * transform.forward;
+    }
+
+    public void pary()
+    {
+        if (hasParried) return;
+        Speed *= -1;
+        hasParried = true;
     }
 }

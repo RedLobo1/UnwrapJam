@@ -15,34 +15,44 @@ public class Shoot : MonoBehaviour
     private void Update()
     {
         fireTime = 1f / BulletsPerSecond;
-        if(Input.GetMouseButton(0) && fireHoldOff <= 0f)
+        //if(Input.GetMouseButton(0) && fireHoldOff <= 0f)
+        //{
+        //    Vector2 dir = Random.insideUnitCircle;
+
+        //    Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
+        //    if (Physics.Raycast(ray, out RaycastHit hit, Camera.farClipPlane, _layerMask))
+        //    {
+        //        FireBullet(new(hit.point.x, transform.position.y, hit.point.z));
+        //        fireHoldOff = fireTime;
+
+        //    }
+        //}
+
+        if (fireHoldOff <= 0f)
         {
-            FireBullet();
+            Vector2 dir = Random.insideUnitCircle;
+            
+            FireBullet(new(dir.x, transform.position.y, dir.y));
             fireHoldOff = fireTime;
+            
         }
+
+
         fireHoldOff -= Time.deltaTime;
     }
 
-    void FireBullet()
-    {
-        Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
-        Debug.Log("before ray");
-        if(Physics.Raycast(ray, out RaycastHit hit,Camera.farClipPlane,_layerMask) )
+    public void FireBullet(Vector3 point)
+    {    
+        Vector3 fireAngle = point - transform.position;
+        if (fireAngle.magnitude <= 0.001f)
         {
-            Debug.Log("after ray");
-
-            Vector3 point = hit.point;
-            Vector3 fireAngle = point - transform.position;
-            if (fireAngle.magnitude <= 0.001f)
-            {
-                fireAngle = transform.forward;
-            }
-            GameObject newBullet = ObjectPool.GetPooledObject();
-            if (newBullet == null) return;
-            newBullet.transform.position = transform.position + fireAngle.normalized;
-            newBullet.transform.LookAt(transform.position + fireAngle);
-            newBullet.SetActive(true);
+            fireAngle = transform.forward;
         }
-        
+        GameObject newBullet = ObjectPool.GetPooledObject();
+        if (newBullet == null) return;
+        newBullet.transform.position = transform.position + fireAngle.normalized;
+        newBullet.transform.LookAt(transform.position + fireAngle);
+
+        newBullet.SetActive(true);
     }
 }

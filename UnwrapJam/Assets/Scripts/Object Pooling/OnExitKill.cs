@@ -10,6 +10,5 @@ public class OnExitKill : MonoBehaviour
     {
         if ((other.gameObject.layer & _LayerMask) != 0) return;
         other.gameObject.SetActive(false);
-        Debug.Log("log");
     }
 }
