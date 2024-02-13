@@ -51,7 +51,7 @@ public class Shoot : MonoBehaviour
         GameObject newBullet = ObjectPool.GetPooledObject();
         if (newBullet == null) return;
         newBullet.transform.position = transform.position + fireAngle.normalized;
-        newBullet.transform.LookAt(transform.position + fireAngle);
+        newBullet.GetComponent<BulletMove>().Dir = fireAngle;
 
         newBullet.SetActive(true);
     }
