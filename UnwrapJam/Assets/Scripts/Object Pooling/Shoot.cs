@@ -5,6 +5,8 @@ using UnityEngine;
 public class Shoot : MonoBehaviour
 {
     public Camera Camera;
+    [SerializeField]
+    private LayerMask _layerMask;
     [Range(0, 1000)]
     public int BulletsPerSecond = 1;
     private float fireTime;
@@ -23,17 +25,24 @@ public class Shoot : MonoBehaviour
 
     void FireBullet()
     {
-        Vector3 point = GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
-        point.y = transform.position.y;
-        Vector3 fireAngle = point - transform.position;
-        if(fireAngle.magnitude <= 0.001f)
+        Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
+        Debug.Log("before ray");
+        if(Physics.Raycast(ray, out RaycastHit hit,Camera.farClipPlane,_layerMask) )
         {
-            fireAngle = transform.forward;
+            Debug.Log("after ray");
+
+            Vector3 point = hit.point;
+            Vector3 fireAngle = point - transform.position;
+            if (fireAngle.magnitude <= 0.001f)
+            {
+                fireAngle = transform.forward;
+            }
+            GameObject newBullet = ObjectPool.GetPooledObject();
+            if (newBullet == null) return;
+            newBullet.transform.position = transform.position + fireAngle.normalized;
+            newBullet.transform.LookAt(transform.position + fireAngle);
+            newBullet.SetActive(true);
         }
-        GameObject newBullet = ObjectPool.GetPooledObject();
-        if (newBullet == null) return;
-        newBullet.transform.position = transform.position + fireAngle.normalized;
-        newBullet.transform.LookAt(transform.position + fireAngle);
-        newBullet.SetActive(true);
+        
     }
 }
