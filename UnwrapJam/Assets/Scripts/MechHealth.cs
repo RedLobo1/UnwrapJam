@@ -18,7 +18,7 @@ public class MechHealth : MonoBehaviour, IDestructible
 
     public void Destroy()
     {
-        Die()
+        Die();
 
     }
 
