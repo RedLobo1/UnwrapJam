@@ -4,18 +4,40 @@ using UnityEngine;
 
 public class BulletMove : MonoBehaviour
 {
-    public float Speed = 2f;
-    private bool hasParried = false;
-
-    private void Update()
+    public Vector3 Dir
     {
-        transform.position += Speed * Time.deltaTime * transform.forward;
+        get => dir;
+        set
+        {
+            dir = value;
+            dir = dir.normalized;
+        }
     }
 
-    public void pary()
+    public float Speed 
+    { 
+        get => speed; 
+        set => speed = value; 
+    }
+
+    private bool hasParried = false;
+    private Vector3 dir;
+    private float speed = 2f;
+
+
+    private void Awake()
+    {
+        Dir = transform.forward;
+    }
+    private void Update()
+    {
+        transform.position += Speed * Time.deltaTime * Dir;
+    }
+
+    public void Pary()
     {
         if (hasParried) return;
-        Speed *= -1;
+        Dir *= -1;
         hasParried = true;
     }
 }
