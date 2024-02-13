@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour, IDestructible
     {
         yield return new WaitForSeconds(_shootingCooldown);
         Debug.Log("Shot Fired");
-        Shoot?.Invoke();
+        Shoot?.Invoke();    
         _isShooting = false;
     }
 
