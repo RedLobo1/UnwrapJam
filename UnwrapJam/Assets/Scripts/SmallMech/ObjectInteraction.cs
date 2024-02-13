@@ -32,13 +32,9 @@ public class ObjectInteraction : MonoBehaviour
             _rigidbodyOfCarriedObject.isKinematic = false;
             
             ThrowCarriedObject();
-
-
         }
 
         CheckForObjectsToInteractWith();
-
-
     }
 
     
