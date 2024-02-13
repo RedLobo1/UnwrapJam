@@ -11,10 +11,11 @@ public class EnemyAlertLogic : MonoBehaviour
     bool _hasSpottedEnemy = false;
     Enemy _thisEnemy;
     NavMeshAgent _agent;
+    [SerializeField]bool _isStatic = false;
 
     private void Start()
     {
-        _agent = GetComponent<NavMeshAgent>();  
+       _agent = GetComponent<NavMeshAgent>();  
         _thisEnemy = GetComponent<Enemy>();
     }
 
@@ -41,7 +42,7 @@ public class EnemyAlertLogic : MonoBehaviour
             {
                 _hasSpottedEnemy = true;
                 _thisEnemy.SetTarget(collider.gameObject);
-                _agent.destination = collider.transform.position;
+                if(!_isStatic)_agent.destination = collider.transform.position;
                 return;
             }
         }
