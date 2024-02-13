@@ -28,7 +28,7 @@ public class Parry : MonoBehaviour
             {
                 if (collider == null) continue;
                 if (!collider.TryGetComponent(out BulletMove bulletMove)) continue;
-                bulletMove.Pary();
+                bulletMove.Pary(_parryCollider.transform.forward);
             }
         }
         
