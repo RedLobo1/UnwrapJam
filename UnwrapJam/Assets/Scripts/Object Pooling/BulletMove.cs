@@ -7,6 +7,7 @@ public class BulletMove : MonoBehaviour
     public Vector3 Dir
     {
         get => dir;
+
         set
         {
             dir = value;
@@ -22,9 +23,13 @@ public class BulletMove : MonoBehaviour
 
     private bool hasParried = false;
     private Vector3 dir;
-    private float speed = 2f;
+    [SerializeField]private float speed = 2f;
 
 
+    private void OnEnable()
+    {
+        hasParried = false;
+    }
     private void Awake()
     {
         Dir = transform.forward;

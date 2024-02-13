@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour, IDestructible
 
   
 
-    void IDestructible.Destroy()
+    void IDestructible.Destruct()
     {
         StartCoroutine(Die());
     }
