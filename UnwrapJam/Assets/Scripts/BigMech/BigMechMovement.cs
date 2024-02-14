@@ -50,7 +50,7 @@ public class BigMechMovement : MonoBehaviour
 
     private void RotatePlayer()
     {
-        Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 50000);
+        Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, 50000);
         Vector3 pointWithoutY = new Vector3(hit.point.x, transform.rotation.y, hit.point.z);
 
         transform.LookAt(pointWithoutY);
