@@ -458,10 +458,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -768.7999267578125,
-            "y": 691.199951171875,
-            "width": 207.9998779296875,
-            "height": 325.60009765625
+            "x": -1013.5999755859375,
+            "y": 707.2000122070313,
+            "width": 208.0,
+            "height": 325.60003662109377
         }
     },
     "m_Slots": [
@@ -658,7 +658,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Power",
     "m_StageCapability": 3,
-    "m_Value": 1.7100000381469727,
+    "m_Value": 5.019999980926514,
     "m_DefaultValue": 1.0,
     "m_Labels": []
 }
@@ -1214,7 +1214,7 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_Value": 20
+    "m_Value": 50
 }
 
 {

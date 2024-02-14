@@ -49,5 +49,13 @@ public class RobotSoundLoop : MonoBehaviour
         {
             AudioManager.instance.Play("TankShoot");
         }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            AudioManager.instance.Play("LittleGuyPickup");
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            AudioManager.instance.Play("LittleGuyThrow");
+        }
     }
 }
