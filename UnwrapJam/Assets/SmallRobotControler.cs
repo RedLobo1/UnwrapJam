@@ -428,13 +428,11 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
     private List<IBigMechPlayerActions> m_BigMechPlayerActionsCallbackInterfaces = new List<IBigMechPlayerActions>();
     private readonly InputAction m_BigMechPlayer_Move;
     private readonly InputAction m_BigMechPlayer_Perry;
-    private readonly InputAction m_BigMechPlayer_Perry;
     public struct BigMechPlayerActions
     {
         private @SmallRobotControler m_Wrapper;
         public BigMechPlayerActions(@SmallRobotControler wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_BigMechPlayer_Move;
-        public InputAction @Perry => m_Wrapper.m_BigMechPlayer_Perry;
         public InputAction @Perry => m_Wrapper.m_BigMechPlayer_Perry;
         public InputActionMap Get() { return m_Wrapper.m_BigMechPlayer; }
         public void Enable() { Get().Enable(); }
@@ -501,7 +499,6 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
     public interface IBigMechPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnPerry(InputAction.CallbackContext context);
         void OnPerry(InputAction.CallbackContext context);
     }
 }
