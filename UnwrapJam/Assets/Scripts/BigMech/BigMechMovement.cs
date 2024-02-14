@@ -7,16 +7,27 @@ using UnityEngine.InputSystem;
 
 public class BigMechMovement : MonoBehaviour
 {
-    private float _speed = 7f; // Speed of movement
     private CharacterController _controller; // Reference to the CharacterController component
 
-    private float _gravity = -9.81f;
-    private float _gravityMultiplier = 3.0f;
+    private const float GRAVITY = -9.81f;
+    private const float GRAVITY_MULTIPLIER = 3.0f;
     private float _velocity;
 
     public SmallRobotControler PlayerInputMaster;
 
     private InputAction _moveAction;
+
+    private float _speed = 7f; // Speed of movement
+    public float Speed
+    {
+        get => _speed;
+        set
+        {
+            if (_speed == value) return;
+            _speed = value;
+            _speed = Mathf.Abs(_speed);
+        }
+    }
 
     void Awake()
     {
@@ -69,7 +80,7 @@ public class BigMechMovement : MonoBehaviour
        
             
         direction.y = ApplyGravity();
-        _controller.Move(_speed * Time.deltaTime * direction);
+        _controller.Move(Speed * Time.deltaTime * direction);
         
 
 
@@ -84,7 +95,7 @@ public class BigMechMovement : MonoBehaviour
         }
         else
         {
-            _velocity += _gravity * _gravityMultiplier * Time.deltaTime;
+            _velocity += GRAVITY * GRAVITY_MULTIPLIER * Time.deltaTime;
         }
 
         return _velocity;

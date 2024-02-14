@@ -22,12 +22,27 @@ public class Parry : MonoBehaviour
     private Vector3[] _arcParryPath;
     [SerializeField, Range(0.2f, 3f)]
     private float _arcParryDuration = 0.5f;
-    [SerializeField,Range(0,90)]
+
+    private Coroutine _currentCoroutin;
+
+    private float _fireVelocityMultiplier = 1;
+
+    public float FireVelocityMultiplier
+    {
+        get => _fireVelocityMultiplier;
+        set
+        {
+            _fireVelocityMultiplier = value;
+            _fireVelocityMultiplier = MathF.Abs(_fireVelocityMultiplier);
+            if (_fireVelocityMultiplier == 0) _fireVelocityMultiplier = 1;
+        }
+    }
     private float _parryVariety = 30;
-
-    private Coroutine _currentCorutinea;
-
-
+    public float ParrySpread 
+    { 
+        get => _parryVariety; 
+        set => _parryVariety = value; 
+    }
 
     private void Awake()
     {
@@ -35,13 +50,13 @@ public class Parry : MonoBehaviour
     }
     public void ForwardParry()
     {
-        if (_currentCorutinea != null) return;
-        _currentCorutinea = StartCoroutine(ForwardParry(OffsetLerp, _forwardParryPath, _forwardParryDuration));
+        if (_currentCoroutin != null) return;
+        _currentCoroutin = StartCoroutine(ForwardParry(OffsetLerp, _forwardParryPath, _forwardParryDuration));
     }
     public void ArcParry()
     {
-        if (_currentCorutinea != null) return;
-        _currentCorutinea = StartCoroutine(ForwardParry(TripelOffsetLerp, _arcParryPath, _arcParryDuration));
+        if (_currentCoroutin != null) return;
+        _currentCoroutin = StartCoroutine(ForwardParry(TripelOffsetLerp, _arcParryPath, _arcParryDuration));
     }
 
     public void ParryThisYouFilthyCasual()
@@ -57,8 +72,9 @@ public class Parry : MonoBehaviour
                 if (collider == null) continue;
                 if (!collider.TryGetComponent(out BulletMove bulletMove)) continue;
                 Vector3 dir =  _parryCollider.transform.position - transform.position;
-                Quaternion rot = Quaternion.Euler(0, Random.Range(-_parryVariety, _parryVariety), 0);
+                Quaternion rot = Quaternion.Euler(0, Random.Range(-ParrySpread, ParrySpread), 0);
                 bulletMove.Pary(rot * dir);
+                bulletMove.Speed *= _fireVelocityMultiplier;
             }
         }
         
