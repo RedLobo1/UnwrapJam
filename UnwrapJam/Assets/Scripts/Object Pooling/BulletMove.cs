@@ -11,6 +11,7 @@ public class BulletMove : MonoBehaviour
         set
         {
             dir = value;
+            dir = new(dir.x, 0, dir.z);
             dir = dir.normalized;
         }
     }
@@ -33,6 +34,7 @@ public class BulletMove : MonoBehaviour
     private void Awake()
     {
         Dir = transform.forward;
+        hasParried = false;
     }
     private void Update()
     {

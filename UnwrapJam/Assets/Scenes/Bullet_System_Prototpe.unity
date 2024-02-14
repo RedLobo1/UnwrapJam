@@ -193,7 +193,6 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 128
-  BulletsPerSecond: 1
 --- !u!1 &755409353
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,6 +828,15 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 64
+  _forwardParryPath:
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 2}
+  _forwardParryDuration: 0.2
+  _arcParryPath:
+  - {x: 0, y: 0, z: 1}
+  - {x: 1, y: 0, z: 2}
+  - {x: 2, y: 0, z: 1}
+  _arcParryDuration: 0.5
 --- !u!1 &1899617707
 GameObject:
   m_ObjectHideFlags: 0
