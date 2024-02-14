@@ -6,17 +6,27 @@ using UnityEngine;
 public class MechHealth : MonoBehaviour, IDestructible
 {
     public int _maxHealth = 100;
-    public float _currentHealth;
+    private float _currentHealth;
 
+    public float CurrentHealth
+    {
+        get => _currentHealth;
+        set
+        {
+            _currentHealth = value;
+            if (_currentHealth < 0) Destruct();
+            if(_currentHealth > _maxHealth) _currentHealth = _maxHealth;
+        }
+    }
 
     private void Awake()
     {
-       _currentHealth = _maxHealth;
+       CurrentHealth = _maxHealth;
     }
 
     public void Damage(float damageAmount)
     {
-        _currentHealth -= damageAmount;
+        CurrentHealth -= damageAmount;
     }
 
     public void Destruct()
@@ -34,20 +44,6 @@ public class MechHealth : MonoBehaviour, IDestructible
 
     public void Heal(float healAmount)
     {
-        _currentHealth += healAmount;
+        CurrentHealth += healAmount;
     }
-
-    private void Update()
-    {
-        if (_currentHealth < 0)
-        {
-             
-        }
-    }
-
-   
-        
-
-
-
 }
