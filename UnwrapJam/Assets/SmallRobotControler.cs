@@ -211,6 +211,15 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Perry"",
+                    ""type"": ""Button"",
+                    ""id"": ""bf1a23cb-6ab3-4d1a-ae0c-ee6455d6c41b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -290,6 +299,17 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
                     ""action"": ""ArcParry"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb28b8a0-7384-4c70-94bd-b730aed6560e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Perry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -311,6 +331,7 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
         m_BigMechPlayer_Move = m_BigMechPlayer.FindAction("Move", throwIfNotFound: true);
         m_BigMechPlayer_ForwardParry = m_BigMechPlayer.FindAction("ForwardParry", throwIfNotFound: true);
         m_BigMechPlayer_ArcParry = m_BigMechPlayer.FindAction("ArcParry", throwIfNotFound: true);
+        m_BigMechPlayer_Perry = m_BigMechPlayer.FindAction("Perry", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -429,6 +450,7 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
     private readonly InputAction m_BigMechPlayer_Move;
     private readonly InputAction m_BigMechPlayer_ForwardParry;
     private readonly InputAction m_BigMechPlayer_ArcParry;
+    private readonly InputAction m_BigMechPlayer_Perry;
     public struct BigMechPlayerActions
     {
         private @SmallRobotControler m_Wrapper;
@@ -436,6 +458,7 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_BigMechPlayer_Move;
         public InputAction @ForwardParry => m_Wrapper.m_BigMechPlayer_ForwardParry;
         public InputAction @ArcParry => m_Wrapper.m_BigMechPlayer_ArcParry;
+        public InputAction @Perry => m_Wrapper.m_BigMechPlayer_Perry;
         public InputActionMap Get() { return m_Wrapper.m_BigMechPlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -454,6 +477,9 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
             @ArcParry.started += instance.OnArcParry;
             @ArcParry.performed += instance.OnArcParry;
             @ArcParry.canceled += instance.OnArcParry;
+            @Perry.started += instance.OnPerry;
+            @Perry.performed += instance.OnPerry;
+            @Perry.canceled += instance.OnPerry;
         }
 
         private void UnregisterCallbacks(IBigMechPlayerActions instance)
@@ -467,6 +493,9 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
             @ArcParry.started -= instance.OnArcParry;
             @ArcParry.performed -= instance.OnArcParry;
             @ArcParry.canceled -= instance.OnArcParry;
+            @Perry.started -= instance.OnPerry;
+            @Perry.performed -= instance.OnPerry;
+            @Perry.canceled -= instance.OnPerry;
         }
 
         public void RemoveCallbacks(IBigMechPlayerActions instance)
@@ -503,5 +532,6 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnForwardParry(InputAction.CallbackContext context);
         void OnArcParry(InputAction.CallbackContext context);
+        void OnPerry(InputAction.CallbackContext context);
     }
 }
