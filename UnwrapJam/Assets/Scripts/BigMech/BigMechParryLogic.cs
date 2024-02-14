@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class BigMechParryLogic : MonoBehaviour
 {
-    [SerializeField] public UnityEvent Parry;
+    [SerializeField] private UnityEvent Parry;
 
 
     private void Update()
