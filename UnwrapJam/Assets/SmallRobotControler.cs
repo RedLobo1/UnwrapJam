@@ -215,7 +215,7 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Perry"",
                     ""type"": ""Button"",
-                    ""id"": ""bf1a23cb-6ab3-4d1a-ae0c-ee6455d6c41b"",
+                    ""id"": ""7bad98b5-fd9a-4444-86b4-848b57158f2a"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -302,7 +302,7 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""cb28b8a0-7384-4c70-94bd-b730aed6560e"",
+                    ""id"": ""5a53c71f-5411-4743-8294-443358dac7da"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
