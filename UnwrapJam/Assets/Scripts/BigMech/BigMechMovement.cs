@@ -68,10 +68,10 @@ public class BigMechMovement : MonoBehaviour
 
        
             
-            _controller.Move(_speed * Time.deltaTime * direction);
+        direction.y = ApplyGravity();
+        _controller.Move(_speed * Time.deltaTime * direction);
         
 
-        direction.y = ApplyGravity();
 
         
     }
