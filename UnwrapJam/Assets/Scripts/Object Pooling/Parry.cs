@@ -37,12 +37,12 @@ public class Parry : MonoBehaviour
     public void ForwardParry()
     {
         if (_currentCorutinea != null) return;
-        _currentCorutinea = StartCoroutine(ForwardParry(OffsetLerp, _forwardParryPath));
+        _currentCorutinea = StartCoroutine(ForwardParry(OffsetLerp, _forwardParryPath, _forwardParryDuration));
     }
     public void ArcParry()
     {
         if (_currentCorutinea != null) return;
-        _currentCorutinea = StartCoroutine(ForwardParry(TripelOffsetLerp, _arcParryPath));
+        _currentCorutinea = StartCoroutine(ForwardParry(TripelOffsetLerp, _arcParryPath, _arcParryDuration));
     }
 
     public void ParryThisYouFilthyCasual()
@@ -65,13 +65,13 @@ public class Parry : MonoBehaviour
         
     }
 
-    public IEnumerator ForwardParry(Func<Vector3[], float, Vector3> eval,Vector3[] points )
+    public IEnumerator ForwardParry(Func<Vector3[], float, Vector3> eval,Vector3[] points, float duration )
     {
         float t = 0;
-        while(t < _forwardParryDuration)
+        while(t < duration)
         {
             t += Time.deltaTime;
-            float tvalue = t / _forwardParryDuration;
+            float tvalue = t / duration;
             _parryCollider.transform.position = eval(points, SmoothStep(tvalue));
             ParryThisYouFilthyCasual();
             yield return null;
