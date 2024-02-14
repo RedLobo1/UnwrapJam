@@ -93,7 +93,7 @@ public class Parry : MonoBehaviour
             yield return null;
         }
         _parryCollider.transform.position = transform.position;
-        _currentCorutinea = null;
+        _currentCoroutin = null;
         _parryCollider.enabled = false;
     }
     private Vector3 TripelOffsetLerp(Vector3[] p, float t) => Vector3.Lerp(
