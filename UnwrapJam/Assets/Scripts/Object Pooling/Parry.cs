@@ -110,6 +110,7 @@ public class Parry : MonoBehaviour
 
     public IEnumerator ForwardParry(Func<Vector3[], float, Vector3> eval,Vector3[] points, float duration )
     {
+        _parryCollider.enabled = true;
         float t = 0;
         while(t < duration)
         {
@@ -121,6 +122,7 @@ public class Parry : MonoBehaviour
         }
         _parryCollider.transform.position = transform.position;
         _currentCoroutin = null;
+        _parryCollider.enabled = false;
     }
     private Vector3 TripelOffsetLerp(Vector3[] p, float t) => Vector3.Lerp(
             Vector3.Lerp(GetOffsetInLocalSpace(p[0]), GetOffsetInLocalSpace(p[1]), t),

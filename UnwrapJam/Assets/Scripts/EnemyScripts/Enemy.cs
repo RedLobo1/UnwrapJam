@@ -42,6 +42,8 @@ public class Enemy : MonoBehaviour, IDestructible
             StartCoroutine(ShootCountdown());
             _isShooting = true;
         }
+
+        this.transform.LookAt(_target.transform);
     }
 
     private IEnumerator ShootCountdown()

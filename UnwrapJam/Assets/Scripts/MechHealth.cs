@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MechHealth : MonoBehaviour, IDestructible
+public class MechHealth : MonoBehaviour
 {
     public int _maxHealth = 100;
     private float _currentHealth;
@@ -14,7 +14,7 @@ public class MechHealth : MonoBehaviour, IDestructible
         set
         {
             _currentHealth = value;
-            if (_currentHealth < 0) Destruct();
+            if (_currentHealth < 0) Die();
             if(_currentHealth > _maxHealth) _currentHealth = _maxHealth;
         }
     }
@@ -29,11 +29,7 @@ public class MechHealth : MonoBehaviour, IDestructible
         CurrentHealth -= damageAmount;
     }
 
-    public void Destruct()
-    {
-        Die();
-
-    }
+    
 
     private IEnumerator Die()
     {

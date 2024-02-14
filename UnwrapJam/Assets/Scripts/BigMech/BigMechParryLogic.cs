@@ -6,11 +6,13 @@ using UnityEngine.InputSystem;
 
 public class BigMechParryLogic : MonoBehaviour
 {
-    [SerializeField] private UnityEvent Parry;
+    [SerializeField] private UnityEvent ParryFront;
+    [SerializeField] private UnityEvent ParrySwipe;
 
     public SmallRobotControler PlayerInputMaster;
 
-    private InputAction _perryAction;
+    private InputAction _parryActionFront;
+    private InputAction _parryActionSwipe;
 
     void Awake()
     {
@@ -19,24 +21,35 @@ public class BigMechParryLogic : MonoBehaviour
 
     private void OnEnable()
     {
-        _perryAction = PlayerInputMaster.BigMechPlayer.Perry;
+        _parryActionFront = PlayerInputMaster.BigMechPlayer.Perry;
+        _parryActionSwipe = PlayerInputMaster.BigMechPlayer.ArcParry;
 
         //PlayerInputMaster.player.Enable();
 
-        _perryAction.Enable();
+        _parryActionFront.Enable();
+        _parryActionSwipe.Enable();
     }
 
     private void OnDisable()
     {
         //PlayerInputMaster.player.Disable();
-        _perryAction.Disable();
+        _parryActionFront.Disable();
+        _parryActionSwipe.Disable();
     }
     private void Update()
     {
-        if (_perryAction.triggered)
+        if (_parryActionFront.triggered)
         {
-            Parry.Invoke();
-            
+            Debug.Log("Front");
+            ParryFront.Invoke();
+        }
+
+        if (_parryActionSwipe.triggered)
+        {
+            Debug.Log("Swipe");
+            ParrySwipe.Invoke();
         }
     }
+
+    
 }

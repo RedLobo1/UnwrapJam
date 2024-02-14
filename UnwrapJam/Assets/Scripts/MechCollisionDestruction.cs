@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class MechCollisionDestruction : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    Collider parryCollider; //used to see if the parry is being used aka the collider is active
+
+    private void Awake()
     {
-        if(collision.gameObject.TryGetComponent<IDestructible>(out IDestructible destructible))
+        parryCollider = GetComponent<Collider>();
+    }
+
+   
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.TryGetComponent<IDestructible>(out IDestructible destructible) && parryCollider.enabled)
         {
             destructible.Destruct();
         }
     }
+  
 }
