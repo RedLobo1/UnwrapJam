@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class MechCollisionDestruction : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.TryGetComponent<IDestructible>(out IDestructible destructible))
+        if(other.gameObject.TryGetComponent<IDestructible>(out IDestructible destructible))
         {
             destructible.Destruct();
         }
     }
+  
 }

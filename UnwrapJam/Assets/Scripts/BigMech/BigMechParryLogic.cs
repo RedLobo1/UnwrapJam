@@ -51,8 +51,5 @@ public class BigMechParryLogic : MonoBehaviour
         }
     }
 
-    public void FindDestructiblesOnParry()
-    {
-
-    }
+    
 }
