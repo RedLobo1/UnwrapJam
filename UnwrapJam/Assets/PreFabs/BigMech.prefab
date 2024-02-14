@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1752883418375936239}
   - component: {fileID: 5433267225639864764}
+  - component: {fileID: 4868449068016424746}
   m_Layer: 0
   m_Name: Parry Box
   m_TagString: ParryBox
@@ -53,6 +54,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4868449068016424746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6116582592824326632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c15f780c4b5b52f4e8146cd2c3e433c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6346222513352082696
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +283,6 @@ MonoBehaviour:
   - {x: 1, y: 0, z: 3}
   - {x: 2, y: 0, z: 2}
   _arcParryDuration: 0.5
-  _parryVariety: 90
 --- !u!114 &8857104079841732429
 MonoBehaviour:
   m_ObjectHideFlags: 0
