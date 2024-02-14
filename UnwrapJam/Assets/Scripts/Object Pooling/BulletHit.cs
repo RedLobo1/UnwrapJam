@@ -8,8 +8,14 @@ public class BulletHit : MonoBehaviour
     
     [SerializeField]float _damage = 10;
     [SerializeField] float _explosionRadius;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Hit");
+    }
     private void OnCollisionEnter(Collision collision)
     {
+        
         
         if (collision.gameObject.TryGetComponent<MechHealth>(out MechHealth mech))
         {
