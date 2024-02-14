@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class BigMechParryLogic : MonoBehaviour
 {
-    [SerializeField] public UnityEvent Parry;
+    [SerializeField] private UnityEvent Parry;
 
     public SmallRobotControler PlayerInputMaster;
 
@@ -37,6 +37,6 @@ public class BigMechParryLogic : MonoBehaviour
         {
             //Debug.Log("AAA");
             Parry.Invoke();
-        }    
+        }
     }
 }
