@@ -173,9 +173,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ForwardParry",
+                    "name": "Perry",
                     "type": "Button",
-                    "id": "d9a384d3-7cde-4b98-8419-a712f1fd278f",
+                    "id": "2b5e3e75-5eb8-4f82-a472-a636438e3835",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -184,16 +184,7 @@
                 {
                     "name": "ArcParry",
                     "type": "Button",
-                    "id": "7d5cd21d-4375-4961-95dd-ed7b4ca3bbd8",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Perry",
-                    "type": "Button",
-                    "id": "7bad98b5-fd9a-4444-86b4-848b57158f2a",
+                    "id": "a344b500-4a23-4c97-8b8e-a759b153e934",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -258,34 +249,23 @@
                 },
                 {
                     "name": "",
-                    "id": "3d179b4d-f14a-4047-becf-76c8fbb66a5b",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ForwardParry",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "17eb5543-bd23-4da5-a37e-994f99c0d4f0",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ArcParry",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5a53c71f-5411-4743-8294-443358dac7da",
+                    "id": "1e06730f-4ec9-49c1-8f00-82972e2913ac",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Perry",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6eb2b851-8a29-49fe-9652-48ba8a014895",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ArcParry",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

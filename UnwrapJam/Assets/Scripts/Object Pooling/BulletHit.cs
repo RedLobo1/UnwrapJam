@@ -9,20 +9,18 @@ public class BulletHit : MonoBehaviour
     [SerializeField]float _damage = 10;
     [SerializeField] float _explosionRadius;
 
+
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hit");
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-        
-        if (collision.gameObject.TryGetComponent<MechHealth>(out MechHealth mech))
+
+        if (other.gameObject.tag == "ParryBox") return;
+
+        if (other.gameObject.TryGetComponent<MechHealth>(out MechHealth mech))
         {
             Debug.Log("Boom");
             mech.Damage(_damage);
         }
-        else
+        else if(other.gameObject.tag != "ParryBox")
         {
             Collider[] colliders = Physics.OverlapSphere(this.transform.position,_explosionRadius);
             foreach(Collider collider in colliders)
@@ -34,6 +32,10 @@ public class BulletHit : MonoBehaviour
                 }
             }
 
+
         }
+
+        this.gameObject.SetActive(false);
+
     }
 }
