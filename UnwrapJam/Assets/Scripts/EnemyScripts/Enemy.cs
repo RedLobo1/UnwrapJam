@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour, IDestructible
             StartCoroutine(ShootCountdown());
             _isShooting = true;
         }
-
+        if(_target!=null)
         this.transform.LookAt(_target.transform);
     }
 
