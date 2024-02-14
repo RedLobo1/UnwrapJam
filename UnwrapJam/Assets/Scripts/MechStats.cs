@@ -1,6 +1,8 @@
-public struct MechStats
-{
-    public float FireVelocityMultiplier;
-    public float MovementSpeed;
+using UnityEngine;
+
+public class MechStats : MonoBehaviour
+{    
+    public float FireVelocityMultiplier = 1;
+    public int ParrySpread = 1;
     
 }
