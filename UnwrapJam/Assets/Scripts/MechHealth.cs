@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class MechHealth : MonoBehaviour, IDestructible
 {
-    public int _maxHealth;
+    public int _maxHealth = 100;
     public float _currentHealth;
 
-   
 
-    
+    private void Awake()
+    {
+       _currentHealth = _maxHealth;
+    }
+
     public void Damage(float damageAmount)
     {
         _currentHealth -= damageAmount;

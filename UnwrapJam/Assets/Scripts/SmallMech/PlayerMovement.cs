@@ -68,10 +68,12 @@ public class PlayerMovement : MonoBehaviour
 
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
+            direction.y = ApplyGravity();
+
             _controller.Move(_speed * Time.deltaTime * direction);
         }
 
-        direction.y = ApplyGravity();
+        
 
         
     }
