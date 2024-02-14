@@ -28,47 +28,21 @@ public class Parry : MonoBehaviour
 
     private Coroutine _currentCorutinea;
 
-    private InputAction _forwardParry;
-    private InputAction _arcParry;
-
-    public SmallRobotControler PlayerInputMaster;
-
 
 
     private void Awake()
     {
         _colliders = new Collider[40];
-        PlayerInputMaster = new SmallRobotControler();
     }
-    private void OnEnable()
-    {
-        _forwardParry = PlayerInputMaster.BigMechPlayer.ForwardParry;
-        _arcParry = PlayerInputMaster.BigMechPlayer.ArcParry;
-
-        _forwardParry.performed += _forwardParry_performed;
-        _arcParry.performed += _arcParry_performed;
-
-        _forwardParry.Enable();
-        _arcParry.Enable();
-    }
-
-    private void _arcParry_performed(InputAction.CallbackContext obj)
+    public void ForwardParry()
     {
         if (_currentCorutinea != null) return;
-        _currentCorutinea = StartCoroutine(ForwardParry(TripelOffsetLerp,_arcParryPath));
-
+        _currentCorutinea = StartCoroutine(ForwardParry(OffsetLerp, _forwardParryPath));
     }
-
-    private void _forwardParry_performed(InputAction.CallbackContext obj)
+    public void ArcParry()
     {
         if (_currentCorutinea != null) return;
-        _currentCorutinea = StartCoroutine(ForwardParry(OffsetLerp,_forwardParryPath));
-    }
-
-    private void OnDisable()
-    {
-        _forwardParry.Disable();
-        _arcParry.Disable();
+        _currentCorutinea = StartCoroutine(ForwardParry(TripelOffsetLerp, _arcParryPath));
     }
 
     public void ParryThisYouFilthyCasual()
