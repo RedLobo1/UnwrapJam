@@ -1,9 +1,12 @@
 using System;
 using System.Collections;
-
-
+using System.Collections.Generic;
+using Unity.Mathematics;
+using Unity.VisualScripting;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Parry : MonoBehaviour
 {
@@ -22,8 +25,6 @@ public class Parry : MonoBehaviour
     private Vector3[] _arcParryPath;
     [SerializeField, Range(0.2f, 3f)]
     private float _arcParryDuration = 0.5f;
-    [SerializeField,Range(0,90)]
-    private float _parryVariety = 30;
 
     private Coroutine _currentCorutinea;
 
@@ -56,8 +57,8 @@ public class Parry : MonoBehaviour
             {
                 if (collider == null) continue;
                 if (!collider.TryGetComponent(out BulletMove bulletMove)) continue;
-                Vector3 dir =  _parryCollider.transform.position - transform.position;
-                Quaternion rot = Quaternion.Euler(0, Random.Range(-_parryVariety, _parryVariety), 0);
+                Vector3 dir =  _parryCollider.transform.position - collider.transform.position;
+                Quaternion rot = quaternion.Euler(0, 0, 0);
                 bulletMove.Pary(rot * dir);
             }
         }
@@ -79,12 +80,10 @@ public class Parry : MonoBehaviour
         _currentCorutinea = null;
     }
     private Vector3 TripelOffsetLerp(Vector3[] p, float t) => Vector3.Lerp(
-            Vector3.Lerp(GetOffsetInLocalSpace(p[0]), GetOffsetInLocalSpace(p[1]), t),
-            Vector3.Lerp(GetOffsetInLocalSpace(p[1]), GetOffsetInLocalSpace(p[2]), t),
+            Vector3.Lerp(transform.position + transform.rotation * p[0], transform.position + transform.rotation * p[1], t),
+            Vector3.Lerp(transform.position + transform.rotation * p[1], transform.position + transform.rotation * p[2], t),
             t);
-    private Vector3 OffsetLerp(Vector3[] p, float t) => Vector3.Lerp(GetOffsetInLocalSpace(p[0]),GetOffsetInLocalSpace(p[1]), t);
-
-    private Vector3 GetOffsetInLocalSpace(Vector3 p) => transform.position + transform.right * p.x + transform.forward * p.z;
+    private Vector3 OffsetLerp(Vector3[] p, float t) => Vector3.Lerp(transform.position + transform.rotation * p[0], transform.position + transform.rotation * p[1], t);
 
     private float SmoothStep(float t) => t * t * t * (t * (6.0f * t - 15.0f) + 10.0f);
     private void OnDrawGizmos()
