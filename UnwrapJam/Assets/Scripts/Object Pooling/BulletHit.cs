@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BulletHit : MonoBehaviour
@@ -9,8 +10,10 @@ public class BulletHit : MonoBehaviour
     [SerializeField] float _explosionRadius;
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.TryGetComponent<MechHealth>(out MechHealth mech))
+      
+        if (collision.gameObject.TryGetComponent<MechHealth>(out MechHealth mech))
         {
+            Debug.Log("Boom");
             mech.Damage(_damage);
         }
         else
