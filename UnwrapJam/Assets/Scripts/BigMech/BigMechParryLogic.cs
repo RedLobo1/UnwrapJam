@@ -36,6 +36,7 @@ public class BigMechParryLogic : MonoBehaviour
         if (_perryAction.triggered)
         {
             Parry.Invoke();
+            
         }
     }
 }

@@ -24,9 +24,10 @@ public class Parry : MonoBehaviour
     private float _arcParryDuration = 0.5f;
 
     private Coroutine _currentCoroutin;
+    private bool _isParryForward = true;
+
 
     private float _fireVelocityMultiplier = 1;
-
     public float FireVelocityMultiplier
     {
         get => _fireVelocityMultiplier;
@@ -44,6 +45,17 @@ public class Parry : MonoBehaviour
         set => _parryVariety = value; 
     }
 
+    private int _splitCount = 1;
+    public int SplitCount
+    {
+        get => _splitCount;
+        set
+        {
+            _splitCount = value;
+            if(_splitCount < 1) _splitCount = 1;
+        }
+    }
+
     private void Awake()
     {
         _colliders = new Collider[40];
@@ -52,11 +64,13 @@ public class Parry : MonoBehaviour
     {
         if (_currentCoroutin != null) return;
         _currentCoroutin = StartCoroutine(ForwardParry(OffsetLerp, _forwardParryPath, _forwardParryDuration));
+        _isParryForward = true;
     }
     public void ArcParry()
     {
         if (_currentCoroutin != null) return;
         _currentCoroutin = StartCoroutine(ForwardParry(TripelOffsetLerp, _arcParryPath, _arcParryDuration));
+        _isParryForward = false;
     }
 
     public void ParryThisYouFilthyCasual()
@@ -67,14 +81,28 @@ public class Parry : MonoBehaviour
 
         if (Physics.OverlapBoxNonAlloc(center, halfExtends, _colliders, Quaternion.identity, _layerMask) != 0)
         {
+            float spread = _isParryForward ? ParrySpread / 2 : ParrySpread;
+
+
             foreach (Collider collider in _colliders)
             {
                 if (collider == null) continue;
                 if (!collider.TryGetComponent(out BulletMove bulletMove)) continue;
+                
                 Vector3 dir =  _parryCollider.transform.position - transform.position;
-                Quaternion rot = Quaternion.Euler(0, Random.Range(-ParrySpread, ParrySpread), 0);
+                Quaternion rot = Quaternion.Euler(0, Random.Range(-spread, spread), 0);
                 bulletMove.Pary(rot * dir);
                 bulletMove.Speed *= _fireVelocityMultiplier;
+
+                for (int i = 1; i < SplitCount; i++)
+                {
+                    dir = _parryCollider.transform.position - transform.position;
+                    rot = Quaternion.Euler(0, Random.Range(-spread, spread), 0);
+
+                    BulletMove bm = ObjectPool.GetPooledObject().GetComponent<BulletMove>();
+                    bm.Dir = rot * dir;
+                    bm.Speed *= _fireVelocityMultiplier;
+                }
             }
         }
         
@@ -109,12 +137,12 @@ public class Parry : MonoBehaviour
         Gizmos.color = Color.red;
         for (int i = 0; i < _forwardParryPath.Length; i++)
         {
-            Gizmos.DrawSphere(transform.position + _forwardParryPath[i], radius);
+            Gizmos.DrawSphere(GetOffsetInLocalSpace(_forwardParryPath[i]), radius);
         }
         Gizmos.color = Color.blue;
         for (int i = 0; i < _arcParryPath.Length; i++)
         {
-            Gizmos.DrawSphere(transform.position + _arcParryPath[i], radius);
+            Gizmos.DrawSphere(GetOffsetInLocalSpace(_arcParryPath[i]), radius);
         }
 
     }
