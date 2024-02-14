@@ -193,6 +193,15 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Perry"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb079bda-65d0-4465-a20e-24473200442d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -250,6 +259,17 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4c187894-1d28-44fc-bc79-1d82a3cb1c8a"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Perry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -269,6 +289,7 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
         // BigMechPlayer
         m_BigMechPlayer = asset.FindActionMap("BigMechPlayer", throwIfNotFound: true);
         m_BigMechPlayer_Move = m_BigMechPlayer.FindAction("Move", throwIfNotFound: true);
+        m_BigMechPlayer_Perry = m_BigMechPlayer.FindAction("Perry", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -385,11 +406,13 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_BigMechPlayer;
     private List<IBigMechPlayerActions> m_BigMechPlayerActionsCallbackInterfaces = new List<IBigMechPlayerActions>();
     private readonly InputAction m_BigMechPlayer_Move;
+    private readonly InputAction m_BigMechPlayer_Perry;
     public struct BigMechPlayerActions
     {
         private @SmallRobotControler m_Wrapper;
         public BigMechPlayerActions(@SmallRobotControler wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_BigMechPlayer_Move;
+        public InputAction @Perry => m_Wrapper.m_BigMechPlayer_Perry;
         public InputActionMap Get() { return m_Wrapper.m_BigMechPlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -402,6 +425,9 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Perry.started += instance.OnPerry;
+            @Perry.performed += instance.OnPerry;
+            @Perry.canceled += instance.OnPerry;
         }
 
         private void UnregisterCallbacks(IBigMechPlayerActions instance)
@@ -409,6 +435,9 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Perry.started -= instance.OnPerry;
+            @Perry.performed -= instance.OnPerry;
+            @Perry.canceled -= instance.OnPerry;
         }
 
         public void RemoveCallbacks(IBigMechPlayerActions instance)
@@ -443,5 +472,6 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
     public interface IBigMechPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnPerry(InputAction.CallbackContext context);
     }
 }
