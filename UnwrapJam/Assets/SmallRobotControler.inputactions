@@ -171,6 +171,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ForwardParry",
+                    "type": "Button",
+                    "id": "d9a384d3-7cde-4b98-8419-a712f1fd278f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ArcParry",
+                    "type": "Button",
+                    "id": "7d5cd21d-4375-4961-95dd-ed7b4ca3bbd8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -228,6 +246,28 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "3d179b4d-f14a-4047-becf-76c8fbb66a5b",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ForwardParry",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "17eb5543-bd23-4da5-a37e-994f99c0d4f0",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ArcParry",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

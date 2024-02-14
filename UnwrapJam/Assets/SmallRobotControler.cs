@@ -193,6 +193,24 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ForwardParry"",
+                    ""type"": ""Button"",
+                    ""id"": ""d9a384d3-7cde-4b98-8419-a712f1fd278f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ArcParry"",
+                    ""type"": ""Button"",
+                    ""id"": ""7d5cd21d-4375-4961-95dd-ed7b4ca3bbd8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -250,6 +268,28 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d179b4d-f14a-4047-becf-76c8fbb66a5b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ForwardParry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""17eb5543-bd23-4da5-a37e-994f99c0d4f0"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ArcParry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -269,6 +309,8 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
         // BigMechPlayer
         m_BigMechPlayer = asset.FindActionMap("BigMechPlayer", throwIfNotFound: true);
         m_BigMechPlayer_Move = m_BigMechPlayer.FindAction("Move", throwIfNotFound: true);
+        m_BigMechPlayer_ForwardParry = m_BigMechPlayer.FindAction("ForwardParry", throwIfNotFound: true);
+        m_BigMechPlayer_ArcParry = m_BigMechPlayer.FindAction("ArcParry", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -385,11 +427,15 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_BigMechPlayer;
     private List<IBigMechPlayerActions> m_BigMechPlayerActionsCallbackInterfaces = new List<IBigMechPlayerActions>();
     private readonly InputAction m_BigMechPlayer_Move;
+    private readonly InputAction m_BigMechPlayer_ForwardParry;
+    private readonly InputAction m_BigMechPlayer_ArcParry;
     public struct BigMechPlayerActions
     {
         private @SmallRobotControler m_Wrapper;
         public BigMechPlayerActions(@SmallRobotControler wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_BigMechPlayer_Move;
+        public InputAction @ForwardParry => m_Wrapper.m_BigMechPlayer_ForwardParry;
+        public InputAction @ArcParry => m_Wrapper.m_BigMechPlayer_ArcParry;
         public InputActionMap Get() { return m_Wrapper.m_BigMechPlayer; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -402,6 +448,12 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @ForwardParry.started += instance.OnForwardParry;
+            @ForwardParry.performed += instance.OnForwardParry;
+            @ForwardParry.canceled += instance.OnForwardParry;
+            @ArcParry.started += instance.OnArcParry;
+            @ArcParry.performed += instance.OnArcParry;
+            @ArcParry.canceled += instance.OnArcParry;
         }
 
         private void UnregisterCallbacks(IBigMechPlayerActions instance)
@@ -409,6 +461,12 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @ForwardParry.started -= instance.OnForwardParry;
+            @ForwardParry.performed -= instance.OnForwardParry;
+            @ForwardParry.canceled -= instance.OnForwardParry;
+            @ArcParry.started -= instance.OnArcParry;
+            @ArcParry.performed -= instance.OnArcParry;
+            @ArcParry.canceled -= instance.OnArcParry;
         }
 
         public void RemoveCallbacks(IBigMechPlayerActions instance)
@@ -443,5 +501,7 @@ public partial class @SmallRobotControler: IInputActionCollection2, IDisposable
     public interface IBigMechPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnForwardParry(InputAction.CallbackContext context);
+        void OnArcParry(InputAction.CallbackContext context);
     }
 }

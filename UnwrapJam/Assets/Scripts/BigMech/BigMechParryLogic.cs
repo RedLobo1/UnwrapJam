@@ -13,6 +13,6 @@ public class BigMechParryLogic : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Parry.Invoke();
-        }    
+        }
     }
 }

@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor.ShaderGraph;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI;
 
 public class Parry : MonoBehaviour
 {
@@ -25,29 +28,53 @@ public class Parry : MonoBehaviour
 
     private Coroutine _currentCorutinea;
 
+    private InputAction _forwardParry;
+    private InputAction _arcParry;
+
+    public SmallRobotControler PlayerInputMaster;
+
+
 
     private void Awake()
     {
         _colliders = new Collider[40];
+        PlayerInputMaster = new SmallRobotControler();
     }
-    private void Update()
+    private void OnEnable()
+    {
+        _forwardParry = PlayerInputMaster.BigMechPlayer.ForwardParry;
+        _arcParry = PlayerInputMaster.BigMechPlayer.ArcParry;
+
+        _forwardParry.performed += _forwardParry_performed;
+        _arcParry.performed += _arcParry_performed;
+
+        _forwardParry.Enable();
+        _arcParry.Enable();
+    }
+
+    private void _arcParry_performed(InputAction.CallbackContext obj)
     {
         if (_currentCorutinea != null) return;
+        _currentCorutinea = StartCoroutine(ForwardParry(TripelOffsetLerp,_arcParryPath));
 
-        if(Input.GetMouseButtonDown(0))
-        {
-            _currentCorutinea = StartCoroutine(ForardParry());
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            _currentCorutinea = StartCoroutine(ArcParry());
-        }
+    }
+
+    private void _forwardParry_performed(InputAction.CallbackContext obj)
+    {
+        if (_currentCorutinea != null) return;
+        _currentCorutinea = StartCoroutine(ForwardParry(OffsetLerp,_forwardParryPath));
+    }
+
+    private void OnDisable()
+    {
+        _forwardParry.Disable();
+        _arcParry.Disable();
     }
 
     public void ParryThisYouFilthyCasual()
     {
         
-        Vector3 center = _parryCollider.bounds.center;
+        Vector3 center = _parryCollider.transform.position;
         Vector3 halfExtends = _parryCollider.bounds.extents;
 
         if (Physics.OverlapBoxNonAlloc(center, halfExtends, _colliders, Quaternion.identity, _layerMask) != 0)
@@ -57,48 +84,34 @@ public class Parry : MonoBehaviour
                 if (collider == null) continue;
                 if (!collider.TryGetComponent(out BulletMove bulletMove)) continue;
                 Vector3 dir =  _parryCollider.transform.position - collider.transform.position;
-                Quaternion rot = quaternion.Euler(1, 0, 0);
+                Quaternion rot = quaternion.Euler(0, 0, 0);
                 bulletMove.Pary(rot * dir);
             }
         }
         
     }
 
-    public IEnumerator ForardParry()
+    public IEnumerator ForwardParry(Func<Vector3[], float, Vector3> eval,Vector3[] points )
     {
         float t = 0;
         while(t < _forwardParryDuration)
         {
             t += Time.deltaTime;
             float tvalue = t / _forwardParryDuration;
-            tvalue = tvalue * tvalue * tvalue * (tvalue * (6.0f * tvalue - 15.0f) + 10.0f);
-            _parryCollider.transform.position = Vector3.Lerp(transform.position + _forwardParryPath[0], transform.position + _forwardParryPath[1], tvalue);
+            _parryCollider.transform.position = eval(points, SmoothStep(tvalue));
             ParryThisYouFilthyCasual();
             yield return null;
         }
-        _parryCollider.transform.position = transform.position + _forwardParryPath[0];
+        _parryCollider.transform.position = transform.position;
         _currentCorutinea = null;
     }
-    public IEnumerator ArcParry()
-    {
-        float t = 0;
-        while (t < _arcParryDuration)
-        {
-            t += Time.deltaTime;
-            float tvalue = t / _arcParryDuration;
-            tvalue = tvalue * tvalue * tvalue * (tvalue * (6.0f * tvalue - 15.0f) + 10.0f);
-            _parryCollider.transform.position = TripelLerp(_arcParryPath,tvalue);
-            ParryThisYouFilthyCasual();
-            yield return null;
-        }
-        _parryCollider.transform.position = transform.position + _arcParryPath[0];
-        _currentCorutinea = null;
-    }
-
-    private Vector3 TripelLerp(Vector3[] p, float t) => Vector3.Lerp(
-            Vector3.Lerp(transform.position + p[0], transform.position + p[1], t),
-            Vector3.Lerp(transform.position + p[1], transform.position + p[2], t),
+    private Vector3 TripelOffsetLerp(Vector3[] p, float t) => Vector3.Lerp(
+            Vector3.Lerp(transform.position + transform.rotation * p[0], transform.position + transform.rotation * p[1], t),
+            Vector3.Lerp(transform.position + transform.rotation * p[1], transform.position + transform.rotation * p[2], t),
             t);
+    private Vector3 OffsetLerp(Vector3[] p, float t) => Vector3.Lerp(transform.position + transform.rotation * p[0], transform.position + transform.rotation * p[1], t);
+
+    private float SmoothStep(float t) => t * t * t * (t * (6.0f * t - 15.0f) + 10.0f);
     private void OnDrawGizmos()
     {
         float radius = 0.1f;
