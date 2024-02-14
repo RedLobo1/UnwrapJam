@@ -35,7 +35,6 @@ public class BigMechParryLogic : MonoBehaviour
     {
         if (_perryAction.triggered)
         {
-            Debug.Log("AAA");
             Parry.Invoke();
         }
     }

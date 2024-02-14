@@ -6,35 +6,39 @@ public class BulletMove : MonoBehaviour
 {
     public Vector3 Dir
     {
-        get => dir;
+        get => _dir;
 
         set
         {
-            dir = value;
-            dir = new(dir.x, 0, dir.z);
-            dir = dir.normalized;
+            _dir = value;
+            _dir = new(_dir.x, 0, _dir.z);
+            _dir = _dir.normalized;
         }
     }
 
-    public float Speed 
-    { 
-        get => speed; 
-        set => speed = value; 
+    public float Speed
+    {
+        get => _speed;
+        set
+        {
+            _speed = value;
+            _speed = Mathf.Abs(_speed);
+        }
     }
 
-    private bool hasParried = false;
-    private Vector3 dir;
-    [SerializeField]private float speed = 2f;
+    private bool _hasParried = false;
+    private Vector3 _dir;
+    [SerializeField]private float _speed = 2f;
 
 
     private void OnEnable()
     {
-        hasParried = false;
+        _hasParried = false;
     }
     private void Awake()
     {
         Dir = transform.forward;
-        hasParried = false;
+        _hasParried = false;
     }
     private void Update()
     {
@@ -43,8 +47,8 @@ public class BulletMove : MonoBehaviour
 
     public void Pary(Vector3 dir)
     {
-        if (hasParried) return;
+        if (_hasParried) return;
         Dir = dir;
-        hasParried = true;
+        _hasParried = true;
     }
 }
