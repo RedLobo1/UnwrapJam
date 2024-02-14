@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour, IDestructible
     public IEnumerator Die()
     {
         //play animation
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(0);
         Destroy(this.gameObject);
 
     }

@@ -22,12 +22,14 @@ public class BulletHit : MonoBehaviour
         }
         else if(other.gameObject.tag != "ParryBox")
         {
+            
             Collider[] colliders = Physics.OverlapSphere(this.transform.position,_explosionRadius);
             foreach(Collider collider in colliders)
             {
-
-                if(collider.TryGetComponent<IDestructible>(out IDestructible destructible))
+                Debug.Log("should destroy");
+                if (collider.TryGetComponent<IDestructible>(out IDestructible destructible))
                 {
+                    
                     destructible.Destruct();
                 }
             }

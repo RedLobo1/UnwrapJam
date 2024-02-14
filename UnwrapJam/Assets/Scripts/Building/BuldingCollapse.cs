@@ -35,6 +35,10 @@ public class BuldingCollapse : MonoBehaviour, IDestructible
         _ps.Play();
         yield return new WaitForSeconds(1.5f);
         _ps.Stop();
+
+        Collider col = GetComponent<Collider>();
+
+        col.enabled = false;
         //changeToRubbleMeshRenderer    
 
     }
