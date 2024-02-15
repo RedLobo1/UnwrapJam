@@ -18,6 +18,8 @@ public class BigMechParryLogic : MonoBehaviour
     public bool _onCooldown;
     public float _cooldownLength = 5;
 
+    [SerializeField] Animator _animator;
+
     void Awake()
     {
         PlayerInputMaster = new SmallRobotControler();
@@ -50,6 +52,7 @@ public class BigMechParryLogic : MonoBehaviour
                 return;
                 
             }
+            _animator.Play("Body|BigMechForwardParry");
             Debug.Log("Front");
             AudioManager.instance.Play("Whoosh");
             ParryFront.Invoke();
@@ -60,6 +63,7 @@ public class BigMechParryLogic : MonoBehaviour
         {
             Debug.Log("Swipe");
             ParrySwipe.Invoke();
+            
         }
     }
 

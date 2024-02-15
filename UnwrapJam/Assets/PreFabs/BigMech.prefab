@@ -669,7 +669,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.918, z: 0.127}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 288549160646242930}
@@ -974,6 +974,7 @@ MonoBehaviour:
         m_CallState: 2
   _onCooldown: 0
   _cooldownLength: 2
+  _animator: {fileID: 0}
 --- !u!114 &8857104079841732429
 MonoBehaviour:
   m_ObjectHideFlags: 0
