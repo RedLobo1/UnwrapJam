@@ -27,6 +27,7 @@ public class BulletMove : MonoBehaviour
     }
 
     private bool _hasParried = false;
+    public bool WasParried  => _hasParried;
     private Vector3 _dir;
     [SerializeField]private float _speed = 2f;
 

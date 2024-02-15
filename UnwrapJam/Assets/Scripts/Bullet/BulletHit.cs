@@ -20,16 +20,15 @@ public class BulletHit : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("ParryBox")) return;
 
-        if (other.gameObject.tag == "ParryBox") return;
-
-        if (other.gameObject.TryGetComponent<MechHealth>(out MechHealth mech))
+        if (other.gameObject.TryGetComponent(out MechHealth mech))
         {
             AudioManager.instance.Play("Hit");
             mech.Damage(_damage);
 
         }
-        else if(other.gameObject.tag != "ParryBox")
+        else if(gameObject.TryGetComponent(out BulletMove bulletMove) && bulletMove.WasParried)
         {
             if (other.gameObject.CompareTag("Enemy"))
             {
@@ -45,8 +44,8 @@ public class BulletHit : MonoBehaviour
             Collider[] colliders = Physics.OverlapSphere(this.transform.position,_explosionRadius);
             foreach(Collider collider in colliders)
             {
-                Debug.Log("should destroy");
-                if (collider.TryGetComponent<IDestructible>(out IDestructible destructible))
+
+                if(collider.TryGetComponent(out IDestructible destructible))
                 {
                     Debug.Log("Killing Enemy");
                     destructible.Destruct();
