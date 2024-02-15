@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     private float _speed = 7f; // Speed of movement
-    private CharacterController _controller; // Reference to the CharacterController component
+    [SerializeField]private CharacterController _controller; // Reference to the CharacterController component
 
     private float _gravity = -9.81f;
     private float _gravityMultiplier = 3.0f;
@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     private float _turnSMoothTime = 0.1f;
     float _turnSmothVelocity;
 
+    [SerializeField]Animator _animator;
+
+
     public SmallRobotControler PlayerInputMaster;
 
     private InputAction _moveAction;
@@ -24,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         PlayerInputMaster = new SmallRobotControler();
+
     }
 
     private void OnEnable()
@@ -41,10 +45,7 @@ public class PlayerMovement : MonoBehaviour
         _moveAction.Disable();
     }
 
-    void Start()
-    {
-        _controller = GetComponent<CharacterController>();
-    }
+
 
     void Update()
     {
@@ -60,6 +61,12 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction = xDirection * Vector3.right + yDirection * Vector3.forward;
         //direction.y = 0f;
 
+        if(_moveAction.IsPressed())
+        {
+            _animator.SetBool("isMoving", true);
+        }
+        else _animator.SetBool("isMoving", false);
+
         if (direction.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
@@ -71,6 +78,8 @@ public class PlayerMovement : MonoBehaviour
             direction.y = ApplyGravity();
 
             _controller.Move(_speed * Time.deltaTime * direction);
+
+            Debug.Log(direction);
         }
 
         
