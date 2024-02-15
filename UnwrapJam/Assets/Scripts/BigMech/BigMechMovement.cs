@@ -13,9 +13,14 @@ public class BigMechMovement : MonoBehaviour
     private const float GRAVITY_MULTIPLIER = 3.0f;
     private float _velocity;
 
+    [SerializeField]Animator topAnimator;
+    [SerializeField]Animator bottomAnimator;
+
     public SmallRobotControler PlayerInputMaster;
 
     private InputAction _moveAction;
+
+    [SerializeField] GameObject topPiece;
 
     private float _speed = 7f; // Speed of movement
     public float Speed
@@ -62,9 +67,10 @@ public class BigMechMovement : MonoBehaviour
     private void RotatePlayer()
     {
         Physics.Raycast(Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()), out RaycastHit hit, 50000);
-        Vector3 pointWithoutY = new Vector3(hit.point.x, transform.position.y, hit.point.z);
+        Vector3 pointWithoutY = new Vector3(hit.point.x, topPiece.transform.position.y, hit.point.z);
 
-        transform.LookAt(pointWithoutY);
+        //topPiece.transform.LookAt(pointWithoutY);
+        topPiece.transform.LookAt(pointWithoutY);
 
     }
 
@@ -77,7 +83,18 @@ public class BigMechMovement : MonoBehaviour
         Vector3 direction = xDirection * Vector3.right + yDirection * Vector3.forward;
         //direction.y = 0f;
 
-       
+       if(_moveAction.IsPressed())
+        {
+            AudioManager.instance.Play("HeavySteps");
+            bottomAnimator.SetBool("isWalking", true);
+
+        }
+       else
+        {
+            AudioManager.instance.Stop("HeavySteps");
+            bottomAnimator.SetBool("isWalking", false);
+        }
+      
             
         direction.y = ApplyGravity();
         _controller.Move(Speed * Time.deltaTime * direction);
