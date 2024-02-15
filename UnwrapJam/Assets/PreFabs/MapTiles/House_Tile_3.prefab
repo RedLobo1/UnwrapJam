@@ -907,10 +907,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5320319477452972998, guid: 3e68382f98bd22d4f8b8135d76dd8aab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5415402619284433702, guid: 3e68382f98bd22d4f8b8135d76dd8aab,
         type: 3}
       propertyPath: m_Name
       value: BuildingTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 5415402619284433702, guid: 3e68382f98bd22d4f8b8135d76dd8aab,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
