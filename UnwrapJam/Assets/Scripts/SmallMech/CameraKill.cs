@@ -14,7 +14,9 @@ public class CameraKill : MonoBehaviour
 
         if (other.gameObject.CompareTag("SmallBoy"))
         {
-            Debug.Log("SmallBoyDead");
+            //Debug.Log("SmallBoyDead");
+
+            SceneManager.LoadScene("DeathScene");
         }
     }
 }

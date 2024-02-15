@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MechHealth : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class MechHealth : MonoBehaviour
             if(_currentHealth > _maxHealth) _currentHealth = _maxHealth;
         }
     }
+    private void Update()
+    {
+        _currentHealth -= Time.deltaTime * 2;
+    }
 
     private void Awake()
     {
@@ -31,11 +36,13 @@ public class MechHealth : MonoBehaviour
 
     
 
-    private IEnumerator Die()
+    private void Die()
     {
-        yield return new WaitForSeconds(3);
+        //yield return new WaitForSeconds(3);
         //open GameOverUI
         //LockiScreen
+
+        SceneManager.LoadScene("DeathScene");
     }
 
     public void Heal(float healAmount)
