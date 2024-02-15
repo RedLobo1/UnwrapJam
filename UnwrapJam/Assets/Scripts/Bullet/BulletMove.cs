@@ -26,20 +26,19 @@ public class BulletMove : MonoBehaviour
         }
     }
 
-    private bool _hasParried = false;
-    public bool WasParried  => _hasParried;
+    public bool WasParried { get; set; } = false;
     private Vector3 _dir;
     [SerializeField]private float _speed = 2f;
 
 
     private void OnEnable()
     {
-        _hasParried = false;
+        WasParried = false;
     }
     private void Awake()
     {
         Dir = transform.forward;
-        _hasParried = false;
+        WasParried = false;
     }
     private void Update()
     {
@@ -48,9 +47,9 @@ public class BulletMove : MonoBehaviour
 
     public void Pary(Vector3 dir)
     {
-        if (_hasParried) return;
+        if (WasParried) return;
         Dir = dir;
-        _hasParried = true;
+        WasParried = true;
         AudioManager.instance.Play("Parry");
     }
 }

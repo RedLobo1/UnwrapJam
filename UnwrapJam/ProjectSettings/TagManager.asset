@@ -8,6 +8,7 @@ TagManager:
   - ParryBox
   - Enemy
   - SmallBoy
+  - Bullet
   layers:
   - Default
   - TransparentFX

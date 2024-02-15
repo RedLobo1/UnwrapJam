@@ -45,6 +45,9 @@ public class Parry : MonoBehaviour
         set => _parryVariety = value; 
     }
 
+    private const int SPLIT_SPREAD_SCALER = 3;
+    private const float SPLIT_SPAWN_SPREAD_SCALER = 0.3f;
+
     private int _splitCount = 1;
     public int SplitCount
     {
@@ -88,6 +91,7 @@ public class Parry : MonoBehaviour
             {
                 if (collider == null) continue;
                 if (!collider.TryGetComponent(out BulletMove bulletMove)) continue;
+                if (bulletMove.WasParried == true) continue;
                 
                 Vector3 dir =  _parryCollider.transform.position - transform.position;
                 Quaternion rot = Quaternion.Euler(0, Random.Range(-spread, spread), 0);
@@ -96,12 +100,18 @@ public class Parry : MonoBehaviour
 
                 for (int i = 1; i < SplitCount; i++)
                 {
-                    dir = _parryCollider.transform.position - transform.position;
-                    rot = Quaternion.Euler(0, Random.Range(-spread, spread), 0);
+                    rot = Quaternion.Euler(0, Random.Range(-SPLIT_SPREAD_SCALER * spread, SPLIT_SPREAD_SCALER * spread), 0);
+                    Vector2 offset = Random.insideUnitCircle;
+                    GameObject go = ObjectPool.GetPooledObject();
+                    if(go == null) continue;
+                    if (!go.TryGetComponent(out BulletMove bm)) return;
 
-                    BulletMove bm = ObjectPool.GetPooledObject().GetComponent<BulletMove>();
+                    bm.gameObject.SetActive(true);
+                    bm.transform.position = bulletMove.transform.position + new Vector3(offset.x,0f,offset.y) * SPLIT_SPAWN_SPREAD_SCALER;
                     bm.Dir = rot * dir;
                     bm.Speed *= _fireVelocityMultiplier;
+                    bm.WasParried = true;
+                    
                 }
             }
         }
