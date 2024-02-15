@@ -11,7 +11,7 @@ public class healthSlider : MonoBehaviour
 
     public void Start()
     {
-        _slider = GetComponentInParent<Slider>();
+        _slider = GetComponentInChildren<Slider>();
 
 
 
@@ -20,8 +20,8 @@ public class healthSlider : MonoBehaviour
 
     public void Update()
     {
-        _slider.maxValue = mech._maxHealth;
-        _slider.value = mech.CurrentHealth;
+        
+        _slider.value = mech.CurrentHealth/mech._maxHealth;
 
         if (_slider.value <= 0)
         {
