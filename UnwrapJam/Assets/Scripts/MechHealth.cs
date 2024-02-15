@@ -18,6 +18,10 @@ public class MechHealth : MonoBehaviour
             if(_currentHealth > _maxHealth) _currentHealth = _maxHealth;
         }
     }
+    private void Update()
+    {
+        _currentHealth -= Time.deltaTime * 2;
+    }
 
     private void Awake()
     {
