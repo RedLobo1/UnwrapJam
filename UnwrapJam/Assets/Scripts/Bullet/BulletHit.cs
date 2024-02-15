@@ -7,7 +7,7 @@ using UnityEngine;
 public class BulletHit : MonoBehaviour
 {
     
-    [SerializeField]float _damage = 10;
+    [SerializeField] float _damage = 10;
     [SerializeField] float _explosionRadius;
 
     [SerializeField] ParticleSystem _explosion;
@@ -21,6 +21,8 @@ public class BulletHit : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("ParryBox")) return;
+        if (other.gameObject.CompareTag("Bullet")) return;
+
 
         if (other.gameObject.TryGetComponent(out MechHealth mech))
         {
