@@ -78,8 +78,6 @@ public class PlayerMovement : MonoBehaviour
             direction.y = ApplyGravity();
 
             _controller.Move(_speed * Time.deltaTime * direction);
-
-            Debug.Log(direction);
         }
 
         
