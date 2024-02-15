@@ -53,7 +53,8 @@ public class Enemy : MonoBehaviour, IDestructible
     {
         yield return new WaitForSeconds(_shootingCooldown);
         Debug.Log("Shot Fired");
-        Shoot?.Invoke();    
+        Shoot?.Invoke();
+        AudioManager.instance.Play("TankShoot");
         _isShooting = false;
     }
 
@@ -65,6 +66,7 @@ public class Enemy : MonoBehaviour, IDestructible
     public IEnumerator Die()
     {
         _explosion.Play();
+        AudioManager.instance.Play("TankDie");
         yield return new WaitForSeconds(1f);
         Destroy(this.gameObject);
 

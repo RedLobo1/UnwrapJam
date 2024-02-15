@@ -73,7 +73,7 @@ public class Parry : MonoBehaviour
         _isParryForward = false;
     }
 
-    public void ParryThisYouFilthyCasual()
+    private void ParryThisYouFilthyCasual()
     {
         
         Vector3 center = _parryCollider.transform.position;
@@ -132,7 +132,7 @@ public class Parry : MonoBehaviour
             t);
     private Vector3 OffsetLerp(Vector3[] p, float t) => Vector3.Lerp(GetOffsetInLocalSpace(p[0]),GetOffsetInLocalSpace(p[1]), t);
 
-    private Vector3 GetOffsetInLocalSpace(Vector3 p) => transform.position + transform.right * p.x + transform.forward * p.z;
+    private Vector3 GetOffsetInLocalSpace(Vector3 p) => transform.position + transform.right * p.x + transform.up * p.y + transform.forward * p.z;
 
     private float SmoothStep(float t) => t * t * t * (t * (6.0f * t - 15.0f) + 10.0f);
     private void OnDrawGizmos()

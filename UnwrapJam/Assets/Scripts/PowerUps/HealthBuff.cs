@@ -11,5 +11,6 @@ public class HealthBuff : PowerUpAffects
     {
         if(!target.TryGetComponent(out MechHealth mechHealth)) return;
         mechHealth.Heal(amount);
+        AudioManager.instance.Play("ScrapCollected");
     }
 }
