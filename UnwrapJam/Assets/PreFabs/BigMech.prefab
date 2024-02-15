@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 4314316027435054068}
   - component: {fileID: 1135051069892239385}
   - component: {fileID: 7637622678133674564}
+  - component: {fileID: 900040428131093716}
   m_Layer: 0
-  m_Name: SmallMechIcon
+  m_Name: BigMechIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,17 +27,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 188213762398510491}
-  m_LocalRotation: {x: 0.7626683, y: 0, z: 0, w: 0.6467898}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.60343975, y: 0.60343975, z: 0.60343975}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5292446329579143869}
   m_Father: {fileID: 6400212708143652521}
-  m_LocalEulerAnglesHint: {x: 99.4, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.97}
+  m_AnchoredPosition: {x: 0, y: 1.115}
   m_SizeDelta: {x: 2.05, y: 1.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4314316027435054068
@@ -102,6 +103,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &900040428131093716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188213762398510491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc598226900eb7428f5eabc0ff678bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3025357943737261131
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,14 +173,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.44353774, g: 0.8301887, b: 0.40256318, a: 1}
+  m_Color: {r: 0.20797431, g: 0.8417894, b: 0.8679245, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: d3ae53b9faa862046ba5d4a425cafb4a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -187,7 +200,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1752883418375936239}
   - component: {fileID: 5433267225639864764}
-  - component: {fileID: 4868449068016424746}
   m_Layer: 0
   m_Name: Parry Box
   m_TagString: ParryBox
@@ -231,18 +243,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4868449068016424746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6116582592824326632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c15f780c4b5b52f4e8146cd2c3e433c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6346222513352082696
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +436,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _onCooldown: 0
+  _cooldownLength: 2
 --- !u!114 &5656610788013060103
 MonoBehaviour:
   m_ObjectHideFlags: 0
