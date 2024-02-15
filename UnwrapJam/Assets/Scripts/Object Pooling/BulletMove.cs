@@ -50,5 +50,6 @@ public class BulletMove : MonoBehaviour
         if (_hasParried) return;
         Dir = dir;
         _hasParried = true;
+        AudioManager.instance.Play("Parry");
     }
 }

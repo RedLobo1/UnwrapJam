@@ -44,8 +44,14 @@ public class BigMechParryLogic : MonoBehaviour
     {
         if (_parryActionFront.triggered)
         {
-            if (_onCooldown) return;
+            if (_onCooldown) 
+            {
+                AudioManager.instance.Play("Buzzer");
+                return;
+                
+            }
             Debug.Log("Front");
+            AudioManager.instance.Play("Whoosh");
             ParryFront.Invoke();
             StartCoroutine(RunCooldown());
         }

@@ -25,8 +25,9 @@ public class BulletHit : MonoBehaviour
 
         if (other.gameObject.TryGetComponent<MechHealth>(out MechHealth mech))
         {
-            Debug.Log("Boom");
+            AudioManager.instance.Play("Hit");
             mech.Damage(_damage);
+
         }
         else if(other.gameObject.tag != "ParryBox")
         {
@@ -36,6 +37,7 @@ public class BulletHit : MonoBehaviour
                 {
                     Debug.Log("Killing Enemy");
                     destructible.Destruct();
+                    AudioManager.instance.Play("TankProjectileHit");
                 }
             }
 
@@ -48,6 +50,7 @@ public class BulletHit : MonoBehaviour
                 {
                     Debug.Log("Killing Enemy");
                     destructible.Destruct();
+                    AudioManager.instance.Play("TankProjectileHit");
                 }
             }
 
@@ -65,6 +68,7 @@ public class BulletHit : MonoBehaviour
         GetComponent<BulletMove>().enabled = false;
         GetComponent<MeshRenderer>().enabled = false;
         _explosion.Play();
+        
         yield return new WaitForSeconds(1);
         this.gameObject.SetActive(false);
         

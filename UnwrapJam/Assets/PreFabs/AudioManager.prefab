@@ -45,9 +45,111 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - Name: 
-    Clip: {fileID: 0}
-    Volume: 0
-    Pitch: 0
+  - Name: HeavySteps
+    Clip: {fileID: 8300000, guid: af8423e8298991f43a6616f09e612f08, type: 3}
+    Volume: 0.411
+    Pitch: 1
+    Loop: 1
+    Source: {fileID: 0}
+  - Name: SteamSound
+    Clip: {fileID: 8300000, guid: abafc80ae817a5144b5a737ebd01c2fe, type: 3}
+    Volume: 0.189
+    Pitch: 1.25
+    Loop: 1
+    Source: {fileID: 0}
+  - Name: EngineRunning
+    Clip: {fileID: 8300000, guid: a9a8f33f191fa54499628f3744bf1de3, type: 3}
+    Volume: 0.652
+    Pitch: 1.05
+    Loop: 1
+    Source: {fileID: 0}
+  - Name: Parry
+    Clip: {fileID: 8300000, guid: bddb3bae599f972488e6b11381ef1f28, type: 3}
+    Volume: 1
+    Pitch: 1.2
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: Hit
+    Clip: {fileID: 8300000, guid: d044998efbfcde54fa4c5563afcc00eb, type: 3}
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: Whoosh
+    Clip: {fileID: 8300000, guid: e68e6d45e1fcb744d894567600b5a226, type: 3}
+    Volume: 0.734
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: Upgrade
+    Clip: {fileID: 8300000, guid: ee28b046990328d458b440dc7968195a, type: 3}
+    Volume: 1
+    Pitch: 0.79
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: ScrapCollected
+    Clip: {fileID: 8300000, guid: 8138797adb20a494d98dde6c348f1581, type: 3}
+    Volume: 1
+    Pitch: 1.59
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: TankAmbience
+    Clip: {fileID: 8300000, guid: d01ab96750d618844993cb1600fc038d, type: 3}
+    Volume: 0.2
+    Pitch: 0.1
+    Loop: 1
+    Source: {fileID: 0}
+  - Name: TankShoot
+    Clip: {fileID: 8300000, guid: bea5096d44681d94aac42ecf3c2a6502, type: 3}
+    Volume: 0.8
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: TankDie
+    Clip: {fileID: 8300000, guid: 5e745841090598f4d98ce860774354c9, type: 3}
+    Volume: 0.2
+    Pitch: 0.84
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: TankProjectileHit
+    Clip: {fileID: 8300000, guid: 5e745841090598f4d98ce860774354c9, type: 3}
+    Volume: 0.3
+    Pitch: 1.31
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: LittleGuyPickup
+    Clip: {fileID: 8300000, guid: 082c2b9f4b6dcc346a6115a09dd98a2a, type: 3}
+    Volume: 0.7
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: LittleGuyThrow
+    Clip: {fileID: 8300000, guid: 69e3e8be4df3b2a44b382c508ea35e9f, type: 3}
+    Volume: 0.75
+    Pitch: 1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: CityAmbience
+    Clip: {fileID: 8300000, guid: c04ccb5deaed82a419e6105eed82de77, type: 3}
+    Volume: 0.351
+    Pitch: 0.79
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: CityAmbience
+    Clip: {fileID: 8300000, guid: c04ccb5deaed82a419e6105eed82de77, type: 3}
+    Volume: 0.351
+    Pitch: 0.79
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: CityAmbience
+    Clip: {fileID: 8300000, guid: c04ccb5deaed82a419e6105eed82de77, type: 3}
+    Volume: 0.351
+    Pitch: 0.79
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: CityAmbience
+    Clip: {fileID: 8300000, guid: c04ccb5deaed82a419e6105eed82de77, type: 3}
+    Volume: 0.351
+    Pitch: 0.79
     Loop: 0
     Source: {fileID: 0}

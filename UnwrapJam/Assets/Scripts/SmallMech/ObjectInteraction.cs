@@ -61,6 +61,7 @@ public class ObjectInteraction : MonoBehaviour
     
     private void ThrowCarriedObject()
     {
+        AudioManager.instance.Play("LittleGuyThrow");
         Rigidbody projectileRb = _rigidbodyOfCarriedObject;
 
         projectileRb.AddForce(transform.forward * 15f, ForceMode.Impulse);
@@ -101,6 +102,8 @@ public class ObjectInteraction : MonoBehaviour
 
     private void PickUpObject(GameObject gameObject)
     {
+        AudioManager.instance.Play("LittleGuyPickup");
+
         IsCarryingObject = true;
 
         _objectBeingCarried = gameObject;

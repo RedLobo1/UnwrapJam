@@ -77,7 +77,15 @@ public class BigMechMovement : MonoBehaviour
         Vector3 direction = xDirection * Vector3.right + yDirection * Vector3.forward;
         //direction.y = 0f;
 
-       
+       if(_moveAction.IsPressed())
+        {
+            AudioManager.instance.Play("HeavySteps");
+        }
+       else
+        {
+            AudioManager.instance.Stop("HeavySteps");
+        }
+      
             
         direction.y = ApplyGravity();
         _controller.Move(Speed * Time.deltaTime * direction);
