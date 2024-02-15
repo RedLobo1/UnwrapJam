@@ -9,7 +9,7 @@ public class CameraKill : MonoBehaviour
     {
         if (other.gameObject.CompareTag("BigMech"))
         {
-            Debug.Log("GameOver");
+            SceneManager.LoadScene("DeathScene");
         }
 
         if (other.gameObject.CompareTag("SmallBoy"))
