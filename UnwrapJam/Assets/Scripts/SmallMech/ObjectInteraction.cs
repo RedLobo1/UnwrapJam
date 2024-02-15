@@ -36,6 +36,11 @@ public class ObjectInteraction : MonoBehaviour
 
     void Update()
     {
+        if (_objectBeingCarried == null)
+        {
+            IsCarryingObject = false;
+        }
+
         if (IsCarryingObject)
         {
             CarryPickedUpObject();
@@ -59,6 +64,8 @@ public class ObjectInteraction : MonoBehaviour
         Rigidbody projectileRb = _rigidbodyOfCarriedObject;
 
         projectileRb.AddForce(transform.forward * 15f, ForceMode.Impulse);
+
+        SideColours.instance.ChangeHoldingColour(false);
     }
 
     private void CarryPickedUpObject()
@@ -103,6 +110,8 @@ public class ObjectInteraction : MonoBehaviour
         //_objectBeingCarried.GetComponent<Rigidbody>().isKinematic = true;
 
         _rigidbodyOfCarriedObject.isKinematic = true;
+
+        SideColours.instance.ChangeHoldingColour(true);
 
     }
 }

@@ -8,14 +8,16 @@ public class BuldingCollapse : MonoBehaviour, IDestructible
 
     Animator animator;
     ParticleSystem _ps;
-    MeshRenderer _renderer;
+
+    [SerializeField]GameObject rubble;
 
     bool _isDestroyed;
+
+    [SerializeField] GameObject _prefabToDrop;
 
 
     private void Awake()
     {
-
         animator = GetComponentInChildren<Animator>();
         _ps = GetComponentInChildren<ParticleSystem>();
         _ps.Stop();
@@ -35,7 +37,11 @@ public class BuldingCollapse : MonoBehaviour, IDestructible
         _ps.Play();
         yield return new WaitForSeconds(1.5f);
         _ps.Stop();
-        //changeToRubbleMeshRenderer    
+        Destroy(this.gameObject);
+        GameObject newRubble = Instantiate(rubble);
+        newRubble.transform.position = new Vector3(this.transform.position.x, 0, this.transform.position.z);
+        if (_prefabToDrop != null) Instantiate(_prefabToDrop, this.transform.position+Vector3.up, Quaternion.identity);
+
 
     }
 }
