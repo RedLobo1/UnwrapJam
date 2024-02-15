@@ -715,13 +715,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _forwardParryPath:
-  - {x: 0, y: 0, z: 20}
-  - {x: 0, y: 0, z: 30}
+  - {x: 0, y: 2, z: 2}
+  - {x: 0, y: 2, z: 3}
   _forwardParryDuration: 0.5
   _arcParryPath:
-  - {x: 0, y: 0, z: 20}
-  - {x: 10, y: 0, z: 30}
-  - {x: 20, y: 0, z: 20}
+  - {x: 0, y: 2, z: 2}
+  - {x: 1, y: 2, z: 3}
+  - {x: 2, y: 2, z: 2}
   _arcParryDuration: 0.5
 --- !u!1 &6116582592824326632
 GameObject:
@@ -947,7 +947,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6027093375868099714}
         m_TargetAssemblyTypeName: Parry, Assembly-CSharp
-        m_MethodName: ParryThisYouFilthyCasual
+        m_MethodName: ForwardParry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -962,7 +962,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6027093375868099714}
         m_TargetAssemblyTypeName: Parry, Assembly-CSharp
-        m_MethodName: ParryThisYouFilthyCasual
+        m_MethodName: ArcParry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
