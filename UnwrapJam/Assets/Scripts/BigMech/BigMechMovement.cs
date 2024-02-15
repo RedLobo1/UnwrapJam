@@ -62,7 +62,6 @@ public class BigMechMovement : MonoBehaviour
     {
         MovePlayer();
         RotatePlayer();
-        Debug.Log(Speed);
     }
 
     private void RotatePlayer()
