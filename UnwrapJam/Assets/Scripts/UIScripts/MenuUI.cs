@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuUI : MonoBehaviour
 {
     public void LoadGameScene()
     {
-        Debug.Log("LoadGame");
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
     {
-        Debug.Log("QuitGame");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        Application.Quit();
     }
 }
