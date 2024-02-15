@@ -36,6 +36,11 @@ public class ObjectInteraction : MonoBehaviour
 
     void Update()
     {
+        if (_objectBeingCarried == null)
+        {
+            IsCarryingObject = false;
+        }
+
         if (IsCarryingObject)
         {
             CarryPickedUpObject();

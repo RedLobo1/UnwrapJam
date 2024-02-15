@@ -5143,6 +5143,8 @@ MonoBehaviour:
   ParrySwipe:
     m_PersistentCalls:
       m_Calls: []
+  _onCooldown: 0
+  _cooldownLength: 5
 --- !u!114 &19872279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5447,6 +5449,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &92631111
 Transform:
   m_ObjectHideFlags: 0
@@ -10523,6 +10527,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &161871706
 Transform:
   m_ObjectHideFlags: 0
@@ -10844,6 +10850,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &235272422
 Transform:
   m_ObjectHideFlags: 0
@@ -11095,6 +11103,8 @@ MonoBehaviour:
   currentHealth: 100
   _shootingRange: 14.7
   _shootingCooldown: 3
+  _explosion: {fileID: 8924774357017380337, guid: 8b4dc57d320e96647b9b058be2713adc,
+    type: 3}
 --- !u!114 &252031851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16690,6 +16700,8 @@ MonoBehaviour:
   currentHealth: 100
   _shootingRange: 14.7
   _shootingCooldown: 3
+  _explosion: {fileID: 8924774357017380337, guid: 8b4dc57d320e96647b9b058be2713adc,
+    type: 3}
 --- !u!114 &321056331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16863,6 +16875,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &332158807
 Transform:
   m_ObjectHideFlags: 0
@@ -16931,6 +16945,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &347558904
 Transform:
   m_ObjectHideFlags: 0
@@ -17047,6 +17063,8 @@ MonoBehaviour:
   currentHealth: 100
   _shootingRange: 14.7
   _shootingCooldown: 3
+  _explosion: {fileID: 8924774357017380337, guid: 8b4dc57d320e96647b9b058be2713adc,
+    type: 3}
 --- !u!114 &353153693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51982,6 +52000,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &780444492
 Transform:
   m_ObjectHideFlags: 0
@@ -62146,6 +62166,8 @@ MonoBehaviour:
   currentHealth: 100
   _shootingRange: 14.7
   _shootingCooldown: 3
+  _explosion: {fileID: 8924774357017380337, guid: 8b4dc57d320e96647b9b058be2713adc,
+    type: 3}
 --- !u!114 &844988554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71975,6 +71997,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &897192125
 Transform:
   m_ObjectHideFlags: 0
@@ -76904,6 +76928,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &933780068
 Transform:
   m_ObjectHideFlags: 0
@@ -82196,6 +82222,8 @@ MonoBehaviour:
   currentHealth: 100
   _shootingRange: 14.7
   _shootingCooldown: 3
+  _explosion: {fileID: 8924774357017380337, guid: 8b4dc57d320e96647b9b058be2713adc,
+    type: 3}
 --- !u!114 &1047849711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87427,7 +87455,8 @@ PrefabInstance:
       propertyPath: _maxHealth
       value: 30
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4868449068016424746, guid: 32eae82097b77ef40ad873f6401d682d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -87483,6 +87512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &1139525262
 Transform:
   m_ObjectHideFlags: 0
@@ -87686,6 +87717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &1173847392
 Transform:
   m_ObjectHideFlags: 0
@@ -87754,6 +87787,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &1201268550
 Transform:
   m_ObjectHideFlags: 0
@@ -87895,6 +87930,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &1246944880
 Transform:
   m_ObjectHideFlags: 0
@@ -88011,6 +88048,8 @@ MonoBehaviour:
   currentHealth: 100
   _shootingRange: 14.7
   _shootingCooldown: 3
+  _explosion: {fileID: 8924774357017380337, guid: 8b4dc57d320e96647b9b058be2713adc,
+    type: 3}
 --- !u!114 &1254701336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93195,6 +93234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &1301325374
 Transform:
   m_ObjectHideFlags: 0
@@ -93263,6 +93304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &1318540773
 Transform:
   m_ObjectHideFlags: 0
@@ -93331,6 +93374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &1319205199
 Transform:
   m_ObjectHideFlags: 0
@@ -93453,6 +93498,8 @@ MonoBehaviour:
   currentHealth: 100
   _shootingRange: 14.7
   _shootingCooldown: 3
+  _explosion: {fileID: 8924774357017380337, guid: 8b4dc57d320e96647b9b058be2713adc,
+    type: 3}
 --- !u!114 &1337210963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93674,6 +93721,8 @@ MonoBehaviour:
   currentHealth: 100
   _shootingRange: 14.7
   _shootingCooldown: 3
+  _explosion: {fileID: 8924774357017380337, guid: 8b4dc57d320e96647b9b058be2713adc,
+    type: 3}
 --- !u!114 &1367494757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93895,6 +93944,7 @@ MonoBehaviour:
   currentHealth: 100
   _shootingRange: 14.7
   _shootingCooldown: 3
+  _explosion: {fileID: 0}
 --- !u!114 &1373930195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103994,6 +104044,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &1435220568
 Transform:
   m_ObjectHideFlags: 0
@@ -109103,6 +109155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &1460473746
 Transform:
   m_ObjectHideFlags: 0
@@ -109298,6 +109352,8 @@ MonoBehaviour:
   currentHealth: 100
   _shootingRange: 14.7
   _shootingCooldown: 3
+  _explosion: {fileID: 8924774357017380337, guid: 8b4dc57d320e96647b9b058be2713adc,
+    type: 3}
 --- !u!114 &1465465994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109392,6 +109448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &1477657101
 Transform:
   m_ObjectHideFlags: 0
@@ -114409,6 +114467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &1589867376
 Transform:
   m_ObjectHideFlags: 0
@@ -134107,6 +134167,8 @@ MonoBehaviour:
   currentHealth: 100
   _shootingRange: 14.7
   _shootingCooldown: 3
+  _explosion: {fileID: 8924774357017380337, guid: 8b4dc57d320e96647b9b058be2713adc,
+    type: 3}
 --- !u!114 &1640714437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134280,6 +134342,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &1641591686
 Transform:
   m_ObjectHideFlags: 0
@@ -134396,6 +134460,8 @@ MonoBehaviour:
   currentHealth: 100
   _shootingRange: 14.7
   _shootingCooldown: 3
+  _explosion: {fileID: 8924774357017380337, guid: 8b4dc57d320e96647b9b058be2713adc,
+    type: 3}
 --- !u!114 &1650178902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134569,6 +134635,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &1670606233
 Transform:
   m_ObjectHideFlags: 0
@@ -149469,6 +149537,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &1781343271
 Transform:
   m_ObjectHideFlags: 0
@@ -154365,6 +154435,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &1843824947
 Transform:
   m_ObjectHideFlags: 0
@@ -154433,6 +154505,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &1852378425
 Transform:
   m_ObjectHideFlags: 0
@@ -154501,6 +154575,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &1867059888
 Transform:
   m_ObjectHideFlags: 0
@@ -154569,6 +154645,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &1894808111
 Transform:
   m_ObjectHideFlags: 0
@@ -154907,6 +154985,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &2011963603
 Transform:
   m_ObjectHideFlags: 0
@@ -154975,6 +155055,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &2016135707
 Transform:
   m_ObjectHideFlags: 0
@@ -155091,6 +155173,8 @@ MonoBehaviour:
   currentHealth: 100
   _shootingRange: 14.7
   _shootingCooldown: 3
+  _explosion: {fileID: 8924774357017380337, guid: 8b4dc57d320e96647b9b058be2713adc,
+    type: 3}
 --- !u!114 &2021718912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155425,6 +155509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &2079682218
 Transform:
   m_ObjectHideFlags: 0
@@ -155676,6 +155762,8 @@ MonoBehaviour:
   currentHealth: 100
   _shootingRange: 14.7
   _shootingCooldown: 3
+  _explosion: {fileID: 8924774357017380337, guid: 8b4dc57d320e96647b9b058be2713adc,
+    type: 3}
 --- !u!114 &2096092936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155849,6 +155937,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f4c78bd99b39d479dffa46b1e3c395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rubble: {fileID: 0}
+  _prefabToDrop: {fileID: 0}
 --- !u!4 &2099962208
 Transform:
   m_ObjectHideFlags: 0
@@ -156100,6 +156190,8 @@ MonoBehaviour:
   currentHealth: 100
   _shootingRange: 14.7
   _shootingCooldown: 3
+  _explosion: {fileID: 8924774357017380337, guid: 8b4dc57d320e96647b9b058be2713adc,
+    type: 3}
 --- !u!114 &2137866344
 MonoBehaviour:
   m_ObjectHideFlags: 0
