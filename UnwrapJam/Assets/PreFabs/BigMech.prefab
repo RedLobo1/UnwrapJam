@@ -651,6 +651,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4904983235804091533}
   - component: {fileID: 2578534550654851277}
+  - component: {fileID: 6027093375868099714}
   m_Layer: 0
   m_Name: BigMechTopFBX
   m_TagString: Untagged
@@ -697,6 +698,31 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6027093375868099714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5717830928951742007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f185c7948b7811141a1b20a4d6fa82a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parryCollider: {fileID: 5433267225639864764}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _forwardParryPath:
+  - {x: 0, y: 0, z: 20}
+  - {x: 0, y: 0, z: 30}
+  _forwardParryDuration: 0.5
+  _arcParryPath:
+  - {x: 0, y: 0, z: 20}
+  - {x: 10, y: 0, z: 30}
+  - {x: 20, y: 0, z: 20}
+  _arcParryDuration: 0.5
 --- !u!1 &6116582592824326632
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +791,6 @@ GameObject:
   - component: {fileID: 6185657678830797642}
   - component: {fileID: 2406497446387569534}
   - component: {fileID: 1088518471130352050}
-  - component: {fileID: 5656610788013060103}
   - component: {fileID: 8857104079841732429}
   - component: {fileID: 2153055914824663617}
   m_Layer: 0
@@ -920,9 +945,9 @@ MonoBehaviour:
   ParryFront:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5656610788013060103}
+      - m_Target: {fileID: 6027093375868099714}
         m_TargetAssemblyTypeName: Parry, Assembly-CSharp
-        m_MethodName: ForwardParry
+        m_MethodName: ParryThisYouFilthyCasual
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -935,9 +960,9 @@ MonoBehaviour:
   ParrySwipe:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5656610788013060103}
+      - m_Target: {fileID: 6027093375868099714}
         m_TargetAssemblyTypeName: Parry, Assembly-CSharp
-        m_MethodName: ArcParry
+        m_MethodName: ParryThisYouFilthyCasual
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -949,31 +974,6 @@ MonoBehaviour:
         m_CallState: 2
   _onCooldown: 0
   _cooldownLength: 2
---- !u!114 &5656610788013060103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6346222513352082696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f185c7948b7811141a1b20a4d6fa82a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _parryCollider: {fileID: 5433267225639864764}
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  _forwardParryPath:
-  - {x: 0, y: 0, z: 2}
-  - {x: 0, y: 0, z: 3}
-  _forwardParryDuration: 0.5
-  _arcParryPath:
-  - {x: 0, y: 0, z: 2}
-  - {x: 1, y: 0, z: 3}
-  - {x: 2, y: 0, z: 2}
-  _arcParryDuration: 0.5
 --- !u!114 &8857104079841732429
 MonoBehaviour:
   m_ObjectHideFlags: 0
