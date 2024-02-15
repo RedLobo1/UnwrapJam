@@ -18,7 +18,9 @@ public class Enemy : MonoBehaviour, IDestructible
     private GameObject _target;
 
     bool _enemyInRange = false;
-    bool _isShooting = false;   
+    bool _isShooting = false;
+
+    [SerializeField]ParticleSystem _explosion;
 
 
     
@@ -26,6 +28,7 @@ public class Enemy : MonoBehaviour, IDestructible
     private void OnEnable()
     {
         currentHealth = maxHealth;
+        _explosion.Stop();
     }
 
     private void Update()
@@ -61,8 +64,8 @@ public class Enemy : MonoBehaviour, IDestructible
 
     public IEnumerator Die()
     {
-        //play animation
-        yield return new WaitForSeconds(0);
+        _explosion.Play();
+        yield return new WaitForSeconds(1f);
         Destroy(this.gameObject);
 
     }
