@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MechHealth : MonoBehaviour
 {
@@ -35,11 +36,13 @@ public class MechHealth : MonoBehaviour
 
     
 
-    private IEnumerator Die()
+    private void Die()
     {
-        yield return new WaitForSeconds(3);
+        //yield return new WaitForSeconds(3);
         //open GameOverUI
         //LockiScreen
+
+        SceneManager.LoadScene("DeathScene");
     }
 
     public void Heal(float healAmount)
