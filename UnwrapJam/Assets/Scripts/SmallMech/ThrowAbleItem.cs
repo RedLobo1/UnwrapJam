@@ -12,7 +12,6 @@ public class ThrowAbleItem : MonoBehaviour, IPickUpAble
 
     public void Interact()
     {
-        Debug.Log("Interacted");
 
         _isPickedUpOnce = true;
         _isGrounded = false;
@@ -21,7 +20,6 @@ public class ThrowAbleItem : MonoBehaviour, IPickUpAble
     public void Selecet()
     {
         if (!_isGrounded) return;
-        Debug.Log("Selected");
     }
 
     private void OnCollisionEnter(Collision collision)
