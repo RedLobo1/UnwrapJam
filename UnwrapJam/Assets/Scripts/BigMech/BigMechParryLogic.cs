@@ -15,6 +15,8 @@ public class BigMechParryLogic : MonoBehaviour
     private InputAction _parryActionFront;
     private InputAction _parryActionSwipe;
 
+    [SerializeField] Collider parryCollider;
+
     public bool _onCooldown;
     public float _cooldownLength = 5;
 
@@ -65,10 +67,14 @@ public class BigMechParryLogic : MonoBehaviour
 
     private IEnumerator RunCooldown()
     {
+        parryCollider.enabled = true;
         SideColours.instance.ChangeParryingColour(true);
+
         _onCooldown = true;
         yield return new WaitForSeconds(_cooldownLength);
         _onCooldown = false;
         SideColours.instance.ChangeParryingColour(false);
+        parryCollider.enabled = false;
+
     }
 }
