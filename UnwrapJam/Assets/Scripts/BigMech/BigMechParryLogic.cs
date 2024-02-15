@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,9 @@ public class BigMechParryLogic : MonoBehaviour
 
     private InputAction _parryActionFront;
     private InputAction _parryActionSwipe;
+
+    public bool _onCooldown;
+    public float _cooldownLength = 5;
 
     void Awake()
     {
@@ -40,8 +44,10 @@ public class BigMechParryLogic : MonoBehaviour
     {
         if (_parryActionFront.triggered)
         {
+            if (_onCooldown) return;
             Debug.Log("Front");
             ParryFront.Invoke();
+            StartCoroutine(RunCooldown());
         }
 
         if (_parryActionSwipe.triggered)
@@ -51,5 +57,12 @@ public class BigMechParryLogic : MonoBehaviour
         }
     }
 
-    
+    private IEnumerator RunCooldown()
+    {
+        SideColours.instance.ChangeParryingColour(true);
+        _onCooldown = true;
+        yield return new WaitForSeconds(_cooldownLength);
+        _onCooldown = false;
+        SideColours.instance.ChangeParryingColour(false);
+    }
 }
