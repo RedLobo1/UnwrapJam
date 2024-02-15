@@ -12,21 +12,20 @@ public class BulletHit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("ParryBox")) return;
 
-        if (other.gameObject.tag == "ParryBox") return;
-
-        if (other.gameObject.TryGetComponent<MechHealth>(out MechHealth mech))
+        if (other.gameObject.TryGetComponent(out MechHealth mech))
         {
             Debug.Log("Boom");
             mech.Damage(_damage);
         }
-        else if(other.gameObject.tag != "ParryBox")
+        else if(gameObject.TryGetComponent(out BulletMove bulletMove) && bulletMove.WasParried)
         {
             Collider[] colliders = Physics.OverlapSphere(this.transform.position,_explosionRadius);
             foreach(Collider collider in colliders)
             {
 
-                if(collider.TryGetComponent<IDestructible>(out IDestructible destructible))
+                if(collider.TryGetComponent(out IDestructible destructible))
                 {
                     destructible.Destruct();
                 }
@@ -35,7 +34,7 @@ public class BulletHit : MonoBehaviour
 
         }
 
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
 
     }
 }

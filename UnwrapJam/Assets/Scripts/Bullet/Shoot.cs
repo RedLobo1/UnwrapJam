@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Shoot : MonoBehaviour
-{
-    public Camera Camera;
-    [SerializeField]
-    private LayerMask _layerMask;
+{    
     public void FireForward()
     {
         FireBullet(transform.position);
