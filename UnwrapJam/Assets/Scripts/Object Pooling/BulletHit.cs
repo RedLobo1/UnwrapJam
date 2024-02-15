@@ -26,8 +26,8 @@ public class BulletHit : MonoBehaviour
             Collider[] colliders = Physics.OverlapSphere(this.transform.position,_explosionRadius);
             foreach(Collider collider in colliders)
             {
-
-                if(collider.TryGetComponent<IDestructible>(out IDestructible destructible))
+                Debug.Log("should destroy");
+                if (collider.TryGetComponent<IDestructible>(out IDestructible destructible))
                 {
                     Debug.Log("Killing Enemy");
                     destructible.Destruct();
