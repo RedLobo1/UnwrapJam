@@ -2980,6 +2980,12 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 339269311196034855, guid: 456fae09c452770489f90b58507c8cf8,
+        type: 3}
+      propertyPath: _prefabToDrop
+      value: 
+      objectReference: {fileID: 5014286844528885292, guid: dd7cd4709f3847b429f783c06a1a5b56,
+        type: 3}
     - target: {fileID: 612483989712078346, guid: 456fae09c452770489f90b58507c8cf8,
         type: 3}
       propertyPath: m_Enabled
