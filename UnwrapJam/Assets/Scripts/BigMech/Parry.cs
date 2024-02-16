@@ -27,7 +27,7 @@ public class Parry : MonoBehaviour
     private bool _isParryForward = true;
 
 
-    private float _fireVelocityMultiplier = 1;
+    private float _fireVelocityMultiplier = 2;
     public float FireVelocityMultiplier
     {
         get => _fireVelocityMultiplier;
