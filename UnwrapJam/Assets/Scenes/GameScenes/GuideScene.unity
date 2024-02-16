@@ -1329,7 +1329,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 128960374}
-        m_TargetAssemblyTypeName: StartMenuUI, Assembly-CSharp
+        m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
         m_MethodName: LoadGameScene
         m_Mode: 1
         m_Arguments:

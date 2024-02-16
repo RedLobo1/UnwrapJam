@@ -6,6 +6,6 @@ public class WinGame : MonoBehaviour
 {
     private void OnDisable()
     {
-        SceneManager.LoadScene("DeathScene");
+        SceneManager.LoadScene(4);
     }
 }

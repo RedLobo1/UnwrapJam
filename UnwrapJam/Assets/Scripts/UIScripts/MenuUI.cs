@@ -4,9 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuUI : MonoBehaviour
 {
-    public void LoadGameScene()
+    public void LoadGuideScene()
     {
         SceneManager.LoadScene(1);
+    }
+    public void LoadGameScene()
+    {
+        SceneManager.LoadScene(2);
     }
 
     public void QuitGame()
