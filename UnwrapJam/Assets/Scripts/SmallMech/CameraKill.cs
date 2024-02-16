@@ -6,15 +6,9 @@ public class CameraKill : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("BigMech"))
+        if (other.gameObject.CompareTag("BigMech") || other.gameObject.CompareTag("SmallBoy"))
         {
-            SceneManager.LoadScene("DeathScene");
-        }
-
-        if (other.gameObject.CompareTag("SmallBoy"))
-        {
-            //Debug.Log("SmallBoyDead");
-
+            AudioManager.instance.StopAll();
             SceneManager.LoadScene("DeathScene");
         }
     }

@@ -6,6 +6,7 @@ public class WinGame : MonoBehaviour
 {
     private void OnDisable()
     {
+        AudioManager.instance.StopAll();
         SceneManager.LoadScene(4);
     }
 }

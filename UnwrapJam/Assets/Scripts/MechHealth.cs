@@ -39,8 +39,9 @@ public class MechHealth : MonoBehaviour
         //yield return new WaitForSeconds(3);
         //open GameOverUI
         //LockiScreen
-
+        AudioManager.instance.StopAll();
         SceneManager.LoadScene("DeathScene");
+
     }
 
     public void Heal(float healAmount)

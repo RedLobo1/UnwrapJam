@@ -18,7 +18,7 @@ public partial class AudioManager : MonoBehaviour
             return;
         }
 
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(transform.root.gameObject);
 
         foreach (Sound s in sounds)
         {
@@ -49,15 +49,29 @@ public partial class AudioManager : MonoBehaviour
 
     public void Stop(string name)
     {
+        StopSoundByName(name);
+    }
+
+    private void StopSoundByName(string name)
+    {
         Sound s = Array.Find(sounds, sound => sound.Name == name);
 
         if (s != null)
         {
-            s.Source.Stop();
+            s?.Source?.Stop();
         }
         else
         {
             Debug.LogWarning("Sound: " + name + " not found");
+        }
+    }
+
+    public void StopAll()
+    {
+        foreach (var sound in sounds)
+        {
+            if (sound.Name == "Theme") continue;
+            StopSoundByName(sound.Name);
         }
     }
 }

@@ -20,4 +20,5 @@ public class CoroutineRunner : MonoBehaviour
     {
         StartCoroutine(coroutine);
     }
+    public void StopAllCorutines() => StopAllCoroutines();
 }
