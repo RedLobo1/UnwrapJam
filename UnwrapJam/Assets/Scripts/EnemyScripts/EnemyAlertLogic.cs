@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,7 +7,6 @@ public class EnemyAlertLogic : MonoBehaviour
 {
     
     [SerializeField]float _sightRadius = 10f;
-    bool _hasSpottedEnemy = false;
     Enemy _thisEnemy;
     NavMeshAgent _agent;
     [SerializeField]bool _isStatic = false;
@@ -17,11 +15,6 @@ public class EnemyAlertLogic : MonoBehaviour
     {
        _agent = GetComponent<NavMeshAgent>();  
         _thisEnemy = GetComponent<Enemy>();
-    }
-
-    void OnEnable()
-    {
-        _hasSpottedEnemy=false;
     }
 
     // Update is called once per frame
@@ -34,25 +27,23 @@ public class EnemyAlertLogic : MonoBehaviour
 
     private void DetectBigMech()
     {
-        Collider[] colliders = Physics.OverlapSphere(this.transform.position, _sightRadius);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _sightRadius);
 
         foreach (Collider collider in colliders)
         {
-            if (collider.gameObject.tag == "BigMech")
+            if (collider.gameObject.CompareTag("BigMech"))
             {
-                _hasSpottedEnemy = true;
                 _thisEnemy.SetTarget(collider.gameObject);
                 if(!_isStatic)_agent.destination = collider.transform.position;
                 return;
             }
         }
-        _hasSpottedEnemy = false;
         _thisEnemy.SetTarget(null);
 
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(this.transform.position, _sightRadius);
+        Gizmos.DrawSphere(transform.position, _sightRadius);
     }
 }
