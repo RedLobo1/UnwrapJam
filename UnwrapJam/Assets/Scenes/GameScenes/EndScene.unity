@@ -447,8 +447,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 127949335}
-        m_TargetAssemblyTypeName: StartMenuUI, Assembly-CSharp
-        m_MethodName: LoadGameScene
+        m_TargetAssemblyTypeName: MenuUI, Assembly-CSharp
+        m_MethodName: LoadGuideScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
