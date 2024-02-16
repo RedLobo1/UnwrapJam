@@ -6,14 +6,11 @@ public class healthSlider : MonoBehaviour
 {
     [SerializeField] Slider _slider;
     [SerializeField] MechHealth mech;
-    [SerializeField] GameObject _fillArea;
+    //[SerializeField] GameObject _fillArea;
 
     public void Start()
     {
         _slider = GetComponentInChildren<Slider>();
-
-
-
 
     }
 
@@ -22,21 +19,15 @@ public class healthSlider : MonoBehaviour
         
         _slider.value = mech.CurrentHealth/mech._maxHealth;
 
-        if (_slider.value <= 0)
-        {
-            _fillArea.SetActive(false);
-        }
-        else
-        {
-            _fillArea.SetActive(true);
-        }
-
-
-
+        //if (_slider.value <= 0)
+        //{
+        //    _fillArea.SetActive(false);
+        //}
+        //else
+        //{
+        //    _fillArea.SetActive(true);
+        //}
     }
-
-
-
 }
 
 

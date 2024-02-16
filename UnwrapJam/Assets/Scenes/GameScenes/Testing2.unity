@@ -290,6 +290,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4059665949671438995, guid: 806390b44d35e5247b510e215eb40d29,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2171,6 +2176,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CoroutineRunner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8826208381455310744, guid: 5485aad86424ca244b8bf48db4aa7aae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
