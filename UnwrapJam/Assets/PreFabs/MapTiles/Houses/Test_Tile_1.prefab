@@ -240,7 +240,9 @@ PrefabInstance:
       value: BuildingTest
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5320319477452972998, guid: 3e68382f98bd22d4f8b8135d76dd8aab, type: 3}
+    - {fileID: 4953892825654511969, guid: 3e68382f98bd22d4f8b8135d76dd8aab, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1113878459863154860, guid: 3e68382f98bd22d4f8b8135d76dd8aab,
         type: 3}
